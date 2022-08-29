@@ -3,6 +3,7 @@ import YaIconButton from './yaui/ya-icon-button/ya-icon-button';
 
 export default class Main {
   constructor() {
+    window.customElements.define("ya-top-app-bar", YaTopAppBar);
     window.customElements.define("ya-icon-button", YaIconButton);
   }
 }

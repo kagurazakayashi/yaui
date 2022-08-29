@@ -1,0 +1,49 @@
+.ya-top-app-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 20px);
+    font-weight: lighter;
+    height: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 0;
+    line-height: 0;
+
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px) saturate(130%);
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.ya-top-app-bar h1 {
+    display: inline-block;
+    margin: 0;
+    margin-left: 10px;
+    font-size: 25px;
+    font-weight: lighter;
+}
+
+.ya-top-app-bar h2 {
+    display: inline-block;
+    margin: 0;
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+.ya-top-app-bar span {
+    display: inline-block;
+    height: 60px;
+    line-height: 60px;
+    overflow: hidden;
+}
+
+.ya-top-app-bar .right {
+    position: absolute;
+    left: auto;
+    right: 10px;
+}
+
+.ya-top-app-bar .ya-icon-button {
+    color: #333;
+}
