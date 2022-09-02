@@ -6,9 +6,45 @@
   </head>
   <body>
     <ya-top-app-bar>
-      <span><ya-icon-button>menu</ya-icon-button></span>
+      <span><ya-icon-button id="btnMainMenu">menu</ya-icon-button></span>
       <span><h1>YAUI</h1></span>
-      <span class="right"><ya-icon-button>account_circle</ya-icon-button></span>
+      <span class="right"><ya-icon-button id="btnAccountMenu">account_circle</ya-icon-button></span>
     </ya-top-app-bar>
+    <ya-menu id="mainMenu" class="leftbar">
+      <ya-menu-item>
+        <span><ya-icon-button>home</ya-icon-button></span>
+        <span>首页</span>
+      </ya-menu-item>
+      <ya-menu-item>
+        <span><ya-icon-button>stars</ya-icon-button></span>
+        <span>图标按钮</span>
+      </ya-menu-item>
+      <ya-menu-item>
+        <span><ya-icon-button>open_in_browser</ya-icon-button></span>
+        <span>顶部栏</span>
+      </ya-menu-item>
+      <ya-menu-item>
+        <span><ya-icon-button>menu_open</ya-icon-button></span>
+        <span>菜单</span>
+      </ya-menu-item>
+    </ya-menu>
+    <ya-menu id="accountMenu" class="leftbar">
+      <div class="accountMenuHead">
+        <ya-icon-button size="100">account_circle</ya-icon-button>
+        <div>游客帐户</div><br/>
+      </div>
+      <ya-menu-item>
+        <span><ya-icon-button>manage_accounts</ya-icon-button></span>
+        <span>账户设置</span>
+      </ya-menu-item>
+      <ya-menu-item>
+        <span><ya-icon-button>settings</ya-icon-button></span>
+        <span>系统设置</span>
+      </ya-menu-item>
+      <ya-menu-item>
+        <span><ya-icon-button>logout</ya-icon-button></span>
+        <span>登出</span>
+      </ya-menu-item>
+    </ya-menu>
   </body>
 </html>

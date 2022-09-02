@@ -1,18 +1,19 @@
 .ya-top-app-bar {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: calc(100% - 20px);
-    font-weight: lighter;
+    top: 10px;
+    left: 10px;
+    width: calc(100% - 40px);
     height: 60px;
     padding-left: 10px;
     padding-right: 10px;
     font-size: 0;
     line-height: 0;
+}
 
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px) saturate(130%);
-    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
+.ya-top-app-bar .borderless {
+    top: 0px;
+    left: 0px;
+    width: calc(100% - 20px);
 }
 
 .ya-top-app-bar h1 {
