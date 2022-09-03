@@ -10,27 +10,33 @@ export default class YaMenu extends HTMLElement {
         this.className = YaMenu.control + " ya-share-box " + this.className;
         const items: HTMLCollectionOf<Element> =
             this.getElementsByTagName("ya-menu-item");
-        let itemsE: HTMLElement[] = [];
+        let num: number = 0;
         for (const key in items) {
             if (Object.prototype.hasOwnProperty.call(items, key)) {
                 const item: HTMLElement = items[key] as HTMLElement;
                 item.className = "ya-menu-item ya-share-ripple";
-                itemsE.push(item);
+                num++;
             }
         }
-        if (itemsE.length == 0) {
+        if (num == 0) {
             return;
         }
         // const itemMargin: number = parseInt(itemsE[0].style.marginRight);
         setTimeout(() => {
-            const thisSize: string[] = [
-                this.clientWidth.toString(),
-                this.clientHeight.toString(),
+            const thisSizeR: DOMRect = this.getBoundingClientRect();
+            const thisSize: number[] = [
+                thisSizeR.width, // 0W
+                thisSizeR.height, // 1H
+                thisSizeR.left, // 2X
+                thisSizeR.top, // 3Y
             ];
-            for (const item of itemsE) {
-                item.style.width = thisSize[0] + "px";
-            }
             this.setAttribute("toSize", thisSize.join(","));
+            for (const key in items) {
+                if (Object.prototype.hasOwnProperty.call(items, key)) {
+                    const item: HTMLElement = items[key] as HTMLElement;
+                    item.style.width = thisSize[0] + "px";
+                }
+            }
             this.style.display = "none";
             this.style.opacity = "1";
         }, 100);
@@ -47,7 +53,20 @@ export default class YaMenu extends HTMLElement {
             YaMenu.close(menu);
         };
         document.body.appendChild(fullscr);
-        const toSizeArr: string[] = toSize.split(",");
+        const sizeStr: string[] = menu.getAttribute("toSize").split(",");
+        let thisSize: number[] = [
+            parseInt(sizeStr[0]), // 0W
+            parseInt(sizeStr[1]), // 1H
+            parseInt(sizeStr[2]), // 2X
+            parseInt(sizeStr[3]), // 3Y
+        ];
+        let bottom: number = thisSize[3] + thisSize[1];
+        if (bottom > document.body.clientHeight - 10) {
+            bottom = document.body.clientHeight - 10;
+        }
+        bottom -= thisSize[3];
+        thisSize[1] = bottom;
+        // const toSizeArr: string[] = toSize.split(",");
         menu.style.width = "0px";
         menu.style.height = "0px";
         menu.style.display = "inline-block";
@@ -55,13 +74,13 @@ export default class YaMenu extends HTMLElement {
         menu.style.overflowY = "hidden";
         menu.style.transition = "all 0.3s";
         setTimeout(() => {
-            menu.style.width = toSizeArr[0] + "px";
-            menu.style.height = toSizeArr[1] + "px";
+            menu.style.width = thisSize[0] + "px";
+            menu.style.height = thisSize[1] + "px";
         }, 100);
         setTimeout(() => {
             menu.style.transition = "";
-            menu.style.width = toSizeArr[0] + "px";
-            menu.style.height = toSizeArr[1] + "px";
+            menu.style.width = thisSize[0] + "px";
+            menu.style.height = thisSize[1] + "px";
             menu.style.overflowY = "auto";
         }, 500);
     }

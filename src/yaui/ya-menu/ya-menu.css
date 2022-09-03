@@ -3,7 +3,6 @@
     display: block;
     z-index: 100;
     width: auto;
-    max-height: 90%;
     overflow-y: auto;
     opacity: 0;
 }
