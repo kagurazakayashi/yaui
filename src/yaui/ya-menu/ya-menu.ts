@@ -1,8 +1,22 @@
+/**
+ * 彈出式選單
+ */
 export default class YaMenu extends HTMLElement {
     static control = "ya-menu";
+
+    /**
+     * 加载所需的样式等其他文件
+     * 該函式由 YAUI 類呼叫，無需手工執行
+     */
+    static loadFile() {
+        require(`./${YaMenu.control}.css`);
+    }
+
+    /**
+     * 對該控制元件的 UI 和行為進行準備工作
+     */
     constructor() {
         super();
-        require(`./${YaMenu.control}.css`);
         const toSize: string | null = this.getAttribute("toSize");
         if (toSize && toSize.length > 0) {
             return;
@@ -42,6 +56,10 @@ export default class YaMenu extends HTMLElement {
         }, 100);
     }
 
+    /**
+     * 開啟一個選單
+     * @param {YaMenu} menu 要開啟的 YaMenu 物件
+     */
     static open(menu: HTMLElement) {
         const toSize: string = menu.getAttribute("toSize");
         if (!toSize || toSize.length == 0) {
@@ -85,6 +103,10 @@ export default class YaMenu extends HTMLElement {
         }, 500);
     }
 
+    /**
+     * 關閉一個選單
+     * @param {YaMenu} menu 要關閉的 YaMenu 物件
+     */
     static close(menu: HTMLElement) {
         menu.style.transition = "all 0.3s";
         setTimeout(() => {
