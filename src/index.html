@@ -1,50 +1,96 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>YAUI DEMO</title>
-  </head>
-  <body>
-    <ya-top-app-bar>
-      <span><ya-icon-button id="btnMainMenu">menu</ya-icon-button></span>
-      <span><h1>YAUI</h1></span>
-      <span class="right"><ya-icon-button id="btnAccountMenu">account_circle</ya-icon-button></span>
-    </ya-top-app-bar>
-    <ya-menu id="mainMenu" class="leftbar">
-      <ya-menu-item>
-        <span><ya-icon-button>home</ya-icon-button></span>
-        <span>首页</span>
-      </ya-menu-item>
-      <ya-menu-item>
-        <span><ya-icon-button>stars</ya-icon-button></span>
-        <span>图标按钮</span>
-      </ya-menu-item>
-      <ya-menu-item>
-        <span><ya-icon-button>open_in_browser</ya-icon-button></span>
-        <span>顶部栏</span>
-      </ya-menu-item>
-      <ya-menu-item>
-        <span><ya-icon-button>menu_open</ya-icon-button></span>
-        <span>菜单</span>
-      </ya-menu-item>
-    </ya-menu>
-    <ya-menu id="accountMenu" class="leftbar">
-      <div class="accountMenuHead">
-        <ya-icon-button size="100">account_circle</ya-icon-button>
-        <div>游客帐户</div><br/>
-      </div>
-      <ya-menu-item>
-        <span><ya-icon-button>manage_accounts</ya-icon-button></span>
-        <span>账户设置</span>
-      </ya-menu-item>
-      <ya-menu-item>
-        <span><ya-icon-button>settings</ya-icon-button></span>
-        <span>系统设置</span>
-      </ya-menu-item>
-      <ya-menu-item>
-        <span><ya-icon-button>logout</ya-icon-button></span>
-        <span>登出</span>
-      </ya-menu-item>
-    </ya-menu>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>YAUI DEMO</title>
+</head>
+
+<body>
+  <ya-top-app-bar>
+    <span>
+      <ya-icon-button id="btnMainMenu">menu</ya-icon-button>
+    </span>
+    <span>
+      <h1>YAUI</h1>
+    </span>
+    <span class="right">
+      <ya-icon-button id="btnAccountMenu">account_circle</ya-icon-button>
+    </span>
+  </ya-top-app-bar>
+  <ya-menu id="mainMenu" class="leftbar">
+    <ya-menu-item>
+      <span>
+        <ya-icon-button>home</ya-icon-button>
+      </span>
+      <span>首页</span>
+    </ya-menu-item>
+    <ya-menu-item>
+      <span>
+        <ya-icon-button>stars</ya-icon-button>
+      </span>
+      <span>图标按钮</span>
+    </ya-menu-item>
+    <ya-menu-item>
+      <span>
+        <ya-icon-button>open_in_browser</ya-icon-button>
+      </span>
+      <span>顶部栏</span>
+    </ya-menu-item>
+    <ya-menu-item>
+      <span>
+        <ya-icon-button>menu_open</ya-icon-button>
+      </span>
+      <span>菜单</span>
+    </ya-menu-item>
+  </ya-menu>
+  <ya-menu id="accountMenu" class="leftbar">
+    <div class="accountMenuHead">
+      <ya-icon-button size="100">account_circle</ya-icon-button>
+      <div>游客帐户</div><br />
+    </div>
+    <ya-menu-item>
+      <span>
+        <ya-icon-button>manage_accounts</ya-icon-button>
+      </span>
+      <span>账户设置</span>
+    </ya-menu-item>
+    <ya-menu-item>
+      <span>
+        <ya-icon-button>settings</ya-icon-button>
+      </span>
+      <span>系统设置</span>
+    </ya-menu-item>
+    <ya-menu-item>
+      <span>
+        <ya-icon-button>logout</ya-icon-button>
+      </span>
+      <span>登出</span>
+    </ya-menu-item>
+  </ya-menu>
+  <ya-scroll-view class="ya-full ya-auto-hide-app-bar">
+    <ya-view class="ya-view-article">
+      <h1>不存在的夏天</h1>
+      <p>灵缡心</p>
+      <p>凌晨黄昏&emsp;随你的影子下沉</p>
+      <p>唇边轻吻&emsp;还是吻不散泪痕</p>
+      <p>时光一直等&emsp;随回忆一直在延伸</p>
+      <p>却又偷偷隐藏起手心余温</p>
+      <p>夜幕时分&emsp;是谁又推开那扇门</p>
+      <p>命运之神&emsp;夺走最后的体温</p>
+      <p>这段旅程&emsp;也许只是幸福的梦</p>
+      <p>醒来后又回到最初的围城</p>
+      <p>还没说的思念&emsp;无法传到耳边</p>
+      <p>与你共度的时间&emsp;只剩我来怀念</p>
+      <p>别留恋&emsp;你我间&emsp;还来不及说再见</p>
+      <p>霓虹灯在绚烂&emsp;你在我的背后入眠</p>
+      <p>未实现的誓言&emsp;穿过似水华年</p>
+      <p>没写完的诗篇&emsp;应该如何重现</p>
+      <p>迈向前&emsp;这只是&emsp;一个&emsp;不存在的夏天</p>
+      <p>抛下从前&emsp;才能与未来相连</p>
+      <p>那个夏天&emsp;曾存在过&emsp;的爱恋</p>
+    </ya-view>
+  </ya-scroll-view>
+</body>
+
 </html>

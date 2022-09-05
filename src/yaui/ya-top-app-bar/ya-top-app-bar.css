@@ -8,6 +8,7 @@
     padding-right: 10px;
     font-size: 0;
     line-height: 0;
+    z-index: 90;
 }
 
 .ya-top-app-bar .borderless {
