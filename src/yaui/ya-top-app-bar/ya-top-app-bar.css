@@ -49,3 +49,27 @@
 .ya-top-app-bar .ya-icon-button {
     color: #333;
 }
+
+.top-app-bar-hide {
+    /* display: none; */
+    /* animation: top-app-bar-hide 0.3s; */
+    top: -80px;
+}
+
+.top-app-bar-show {
+    /* display: block; */
+    /* animation: top-app-bar-show 0.3s; */
+    top: 10px;
+}
+
+/* @keyframes top-app-bar-hide {
+    0% {
+        transform: translateY(-80px);
+    }
+}
+
+@keyframes top-app-bar-show {
+    0% {
+        transform: translateY(0px);
+    }
+} */
