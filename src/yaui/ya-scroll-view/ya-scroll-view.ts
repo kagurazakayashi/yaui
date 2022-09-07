@@ -22,6 +22,7 @@ export default class YaScrollView extends HTMLElement {
     constructor() {
         super();
         this.className = YaScrollView.control + " " + this.className;
+        /*
         if (this.className.indexOf("ya-auto-hide-app-bar") >= 0) {
             const appBarEs: HTMLCollectionOf<Element> =
                 document.body.getElementsByTagName("ya-top-app-bar");
@@ -62,8 +63,10 @@ export default class YaScrollView extends HTMLElement {
                 this.scrollOldTop = top;
             });
         }
+        */
     }
 
+    /*
     appBarShow(isShow: boolean) {
         if (isShow) {
             for (const appBar of this.appBars) {
@@ -87,4 +90,5 @@ export default class YaScrollView extends HTMLElement {
             }
         }
     }
+    */
 }
