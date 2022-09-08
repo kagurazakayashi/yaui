@@ -1,6 +1,13 @@
-html,
 body {
-    background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+    background: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+    background: gray url(images/background.jpg) no-repeat fixed top;
+    background-size: cover;
+}
+
+table {
+    border: none;
+    margin: 0;
+    padding: 0;
 }
 
 #mainMenu {

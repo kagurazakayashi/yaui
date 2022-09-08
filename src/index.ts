@@ -6,6 +6,7 @@ import YaIconButton from "./yaui/ya-icon-button/ya-icon-button";
 import YaMenu from "./yaui/ya-menu/ya-menu";
 import YaView from "./yaui/ya-view/ya-view";
 import YaScrollView from "./yaui/ya-scroll-view/ya-scroll-view";
+import YaDialog from "./yaui/ya-dialog/ya-dialog";
 
 /**
  * 網頁載入完成後要執行的程式碼
@@ -20,6 +21,7 @@ export default class Main {
         YAUI.load(YaMenu);
         YAUI.load(YaView);
         YAUI.load(YaScrollView);
+        YAUI.load(YaDialog);
         // 點選圖示按鈕，開啟一個選單
         const btnMainMenu = document.getElementById("btnMainMenu");
         btnMainMenu.addEventListener("click", () => {

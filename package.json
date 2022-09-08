@@ -93,6 +93,7 @@
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
+    "html-loader": "^4.1.0",
     "material-icons": "^1.11.11"
   }
 }

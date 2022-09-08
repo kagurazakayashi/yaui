@@ -1,0 +1,37 @@
+/**
+ * 自定義對話方塊
+ */
+export default class YaDialog extends HTMLElement {
+    static control = "ya-dialog";
+
+    /**
+     * 加载所需的样式等其他文件
+     * 該函式由 YAUI 類呼叫，無需手工執行
+     */
+    static loadFile() {
+        require(`./${YaDialog.control}.css`);
+    }
+
+    /**
+     * 對該控制元件的 UI 和行為進行準備工作
+     */
+     constructor() {
+        super();
+        this.className = YaDialog.control + " " + this.className;
+        const fullscr: HTMLDivElement = document.createElement("div");
+        fullscr.className = "ya-fullscr";
+        fullscr.onclick = () => {
+            // YaMenu.close(menu);
+        };
+        document.body.appendChild(fullscr);
+        // ya-dialog-add-side
+        const sidebars: HTMLCollectionOf<Element> = this.getElementsByClassName(YaDialog.control + "-sidebar");
+        const contents: HTMLCollectionOf<Element> = this.getElementsByClassName(YaDialog.control + "-content");
+        for (const key in contents) {
+            if (Object.prototype.hasOwnProperty.call(contents, key)) {
+                const content:HTMLElement = contents[key] as HTMLElement;
+                content.className += " ya-share-box";
+            }
+        }
+     }
+}

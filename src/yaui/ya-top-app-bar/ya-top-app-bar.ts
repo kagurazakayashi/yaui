@@ -21,7 +21,7 @@ export default class YaTopAppBar extends HTMLElement {
      */
     constructor() {
         super();
-        if (this.className.indexOf("ya-top-app-bar-auto-hide") >= 0) {
+        if (this.className.indexOf(YaTopAppBar.control + "-auto-hide") >= 0) {
             this.style.transition = "top 0.5s";
             this.addMoveEventListener();
         }
@@ -101,7 +101,7 @@ export default class YaTopAppBar extends HTMLElement {
         let i = 0;
         let modes: string[] = ["show", "hide"];
         for (; i < modes.length; i++) {
-            modes[i] = "top-app-bar-" + modes[i];
+            modes[i] = YaTopAppBar.control + "-" + modes[i];
         }
         let classNameList: string[] = this.className.split(" ");
         for (i = 0; i < classNameList.length; i++) {

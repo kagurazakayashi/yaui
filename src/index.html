@@ -69,7 +69,40 @@
       <span>登出</span>
     </ya-menu-item>
   </ya-menu>
-  <ya-scroll-view class="ya-full">
+  <ya-dialog>
+    <div class="ya-dialog-sidebar">
+      <img src="images/logo.png" class="ya-dialog-logo" alt="logo" />
+    </div>
+    <div class="ya-dialog-content">
+      <h1><span class="ya-dialog-title-block"></span>用户登录</h1>
+      <p>&emsp;</p>
+      <table class="">
+        <tbody>
+          <tr>
+            <td>服务器</td>
+            <td>
+              <ya-text-box class="ya-text-box-select" value="server1">
+                <ya-menu id="accountMenu" class="leftbar">
+                  <ya-menu-item value="server1">虚拟服务器1</ya-menu-item>
+                  <ya-menu-item value="server2">虚拟服务器2</ya-menu-item>
+                  <ya-menu-item value="server3">虚拟服务器3</ya-menu-item>
+                </ya-menu>
+              </ya-text-box>
+            </td>
+          </tr>
+          <tr>
+            <td>用户名</td>
+            <td><ya-text-box value="demo"></ya-text-box></td>
+          </tr>
+          <tr>
+            <td>密码</td>
+            <td><ya-text-box class="ya-text-box-password" value="password"></ya-text-box></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ya-dialog>
+  <!-- <ya-scroll-view class="ya-full">
     <ya-view class="ya-view-article">
       <h1>不存在的夏天</h1>
       <p>灵缡心</p>
@@ -91,7 +124,7 @@
       <p>抛下从前&emsp;才能与未来相连</p>
       <p>那个夏天&emsp;曾存在过&emsp;的爱恋</p>
     </ya-view>
-  </ya-scroll-view>
+  </ya-scroll-view> -->
 </body>
 
 </html>

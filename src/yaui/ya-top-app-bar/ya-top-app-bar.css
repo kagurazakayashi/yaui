@@ -50,13 +50,13 @@
     color: #333;
 }
 
-.top-app-bar-hide {
+.ya-top-app-bar-hide {
     /* display: none; */
     /* animation: top-app-bar-hide 0.3s; */
     top: -80px;
 }
 
-.top-app-bar-show {
+.ya-top-app-bar-show {
     /* display: block; */
     /* animation: top-app-bar-show 0.3s; */
     top: 10px;
