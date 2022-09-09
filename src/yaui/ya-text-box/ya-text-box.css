@@ -1,0 +1,26 @@
+.ya-text-box {
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+    margin: 5px;
+    margin-top: 10px;
+    border: solid;
+    border-width: 1px;
+    border-color: gray;
+}
+
+.ya-text-box input {
+    font-size:15px;
+    margin: 5px;
+    background-color: transparent;
+    border: none;
+    outline:medium;
+}
+
+.ya-text-box-placeholder {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    pointer-events: none;
+    color: gray;
+}

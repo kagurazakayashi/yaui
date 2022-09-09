@@ -76,12 +76,12 @@
     <div class="ya-dialog-content">
       <h1><span class="ya-dialog-title-block"></span>用户登录</h1>
       <p>&emsp;</p>
-      <table class="">
+      <table class="loginTB">
         <tbody>
           <tr>
-            <td>服务器</td>
+            <td><span class="material-icons-outlined">dns</span></td>
             <td>
-              <ya-text-box class="ya-text-box-select" value="server1">
+              <ya-text-box class="ya-text-box-select" value="server1" placeholder="服务器">
                 <ya-menu id="accountMenu" class="leftbar">
                   <ya-menu-item value="server1">虚拟服务器1</ya-menu-item>
                   <ya-menu-item value="server2">虚拟服务器2</ya-menu-item>
@@ -91,12 +91,12 @@
             </td>
           </tr>
           <tr>
-            <td>用户名</td>
-            <td><ya-text-box value="demo"></ya-text-box></td>
+            <td><span class="material-icons-outlined">person</span></td>
+            <td><ya-text-box value="demo" placeholder="用户名"></ya-text-box></td>
           </tr>
           <tr>
-            <td>密码</td>
-            <td><ya-text-box class="ya-text-box-password" value="password"></ya-text-box></td>
+            <td><span class="material-icons-outlined">lock</span></td>
+            <td><ya-text-box class="ya-text-box-password" value="password" placeholder="密码"></ya-text-box></td>
           </tr>
         </tbody>
       </table>
