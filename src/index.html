@@ -87,16 +87,26 @@
                   <ya-menu-item value="server2">虚拟服务器2</ya-menu-item>
                   <ya-menu-item value="server3">虚拟服务器3</ya-menu-item>
                 </ya-menu>
+                <div class="ya-text-box-rule" ya-mode="">必须指定一个服务器</div>
               </ya-text-box>
             </td>
           </tr>
           <tr>
             <td><span class="material-icons-outlined">person</span></td>
-            <td><ya-text-box value="demo" placeholder="用户名"></ya-text-box></td>
+            <td>
+              <ya-text-box value="demo" placeholder="用户名">
+                <div class="ya-text-box-rule">必须指定一个用户名</div>
+                <div class="ya-text-box-rule" ya-mode="^[a-zA-Z0-9\u4e00-\u9fa5_-]{3,32}$">用户名在3-32位之间，由字母/数字/汉字组成</div>
+              </ya-text-box>
+            </td>
           </tr>
           <tr>
             <td><span class="material-icons-outlined">lock</span></td>
-            <td><ya-text-box class="ya-text-box-password" value="password" placeholder="密码"></ya-text-box></td>
+            <td>
+              <ya-text-box class="ya-text-box-password" value="password" placeholder="密码">
+                <div class="ya-text-box-rule">必须指定一个密码</div>
+              </ya-text-box>
+            </td>
           </tr>
         </tbody>
       </table>

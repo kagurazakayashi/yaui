@@ -8,14 +8,11 @@ body {
     border: none;
     margin: 0;
     padding: 0;
+    width: 90%;
 }
 
 .loginTB .material-icons-outlined {
     padding-left: 30px;
-    padding-right: 10px;
-}
-
-.loginTB td {
     vertical-align: middle;
 }
 
