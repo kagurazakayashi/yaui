@@ -15,23 +15,24 @@ export default class YaDialog extends HTMLElement {
     /**
      * 對該控制元件的 UI 和行為進行準備工作
      */
-     constructor() {
+    constructor() {
         super();
         this.className = YaDialog.control + " " + this.className;
-        const fullscr: HTMLDivElement = document.createElement("div");
-        fullscr.className = "ya-fullscr";
-        fullscr.onclick = () => {
-            // YaMenu.close(menu);
-        };
-        document.body.appendChild(fullscr);
         // ya-dialog-add-side
-        const sidebars: HTMLCollectionOf<Element> = this.getElementsByClassName(YaDialog.control + "-sidebar");
-        const contents: HTMLCollectionOf<Element> = this.getElementsByClassName(YaDialog.control + "-content");
+        const sidebars: HTMLCollectionOf<Element> = this.getElementsByClassName(
+            YaDialog.control + "-sidebar"
+        );
+        const contents: HTMLCollectionOf<Element> = this.getElementsByClassName(
+            YaDialog.control + "-content"
+        );
         for (const key in contents) {
             if (Object.prototype.hasOwnProperty.call(contents, key)) {
-                const content:HTMLElement = contents[key] as HTMLElement;
+                const content: HTMLElement = contents[key] as HTMLElement;
                 content.className += " ya-share-box";
+                const bg: HTMLSpanElement = document.createElement("span");
+                bg.className = "ya-share-box-bg";
+                content.insertBefore(bg, content.firstChild);
             }
         }
-     }
+    }
 }

@@ -21,6 +21,9 @@ export default class YaTopAppBar extends HTMLElement {
      */
     constructor() {
         super();
+        const bg: HTMLSpanElement = document.createElement("span");
+        bg.className = "ya-share-box-bg";
+        this.insertBefore(bg, this.firstChild);
         if (this.className.indexOf(YaTopAppBar.control + "-auto-hide") >= 0) {
             this.style.transition = "top 0.5s";
             this.addMoveEventListener();
