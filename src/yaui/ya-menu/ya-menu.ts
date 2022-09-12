@@ -49,7 +49,6 @@ export default class YaMenu extends HTMLElement {
         if (num == 0) {
             return;
         }
-        // const itemMargin: number = parseInt(itemsE[0].style.marginRight);
         setTimeout(() => {
             const thisSizeR: DOMRect = this.getBoundingClientRect();
             const thisSize: number[] = [
@@ -61,7 +60,12 @@ export default class YaMenu extends HTMLElement {
             this.setAttribute("ya-size", thisSize.join(","));
             for (let i = 0; i < items.length; i++) {
                 const item: HTMLElement = items[i] as HTMLElement;
-                item.style.width = thisSize[0] + "px";
+                item.style.width =
+                    thisSize[0] -
+                    (item.className.indexOf("ya-menu-item-no-icon") >= 0
+                        ? 30
+                        : 0) +
+                    "px";
                 item.addEventListener("click", () => {
                     this.delegate?.yaClickMenuItem(this, item, i);
                 });
@@ -72,8 +76,39 @@ export default class YaMenu extends HTMLElement {
     }
 
     /**
+     * 點選選單以外的地方時
+     * document.body.addEventListener("click", closeEvent);
+     * @param {MouseEvent} ev 點選事件
+     */
+    closeEvent = (ev: MouseEvent) => {
+        const clickX: number = ev.clientX;
+        const clickY: number = ev.clientY;
+        const divRect: DOMRect = this.getBoundingClientRect();
+        const divXS: number = divRect.x;
+        const divYS: number = divRect.y;
+        const divXE: number = divXS + divRect.width;
+        const divYE: number = divYS + divRect.height;
+        // console.log("click", clickX, clickY);
+        // console.log("divX", divXS, divXE);
+        // console.log("divY", divYS, divYE);
+        // console.log("clickX < divXS", clickX < divXS);
+        // console.log("clickX > divXE", clickX > divXE);
+        // console.log("clickY < divYS", clickY < divYS);
+        // console.log("clickY > divYE", clickY > divYE);
+        if (
+            clickX < divXS ||
+            clickX > divXE ||
+            clickY < divYS ||
+            clickY > divYE
+        ) {
+            YaMenu.close(this);
+            ev.stopPropagation();
+        }
+    };
+
+    /**
      * 配置動畫前的狀態
-     * @param menu 
+     * @param menu
      */
     aniPre(menu: YaMenu | HTMLElement) {
         menu.style.width = "0px";
@@ -89,14 +124,15 @@ export default class YaMenu extends HTMLElement {
      * @param {YaMenu} menu 要開啟的 YaMenu 物件
      */
     static open(menu: YaMenu | HTMLElement) {
-        if (menu.getAttribute("ya-open") == "1") {
+        const thisMenu: YaMenu = menu as YaMenu;
+        if (thisMenu.getAttribute("ya-open") == "1") {
             return;
         }
-        const toSize: string = menu.getAttribute("ya-size");
+        const toSize: string = thisMenu.getAttribute("ya-size");
         if (!toSize || toSize.length == 0) {
             return;
         }
-        const sizeStr: string[] = menu.getAttribute("ya-size").split(",");
+        const sizeStr: string[] = thisMenu.getAttribute("ya-size").split(",");
         let thisSize: number[] = [
             parseInt(sizeStr[0]), // 0W
             parseInt(sizeStr[1]), // 1H
@@ -110,19 +146,22 @@ export default class YaMenu extends HTMLElement {
         bottom -= thisSize[3];
         thisSize[1] = bottom;
         // const toSizeArr: string[] = toSize.split(",");
-        (menu as YaMenu).aniPre(menu);
+        thisMenu.aniPre(thisMenu);
         setTimeout(() => {
-            menu.style.width = thisSize[0] + "px";
-            menu.style.height = thisSize[1] + "px";
-            (menu as YaMenu).bg.style.width = thisSize[0] + "px";
-            (menu as YaMenu).bg.style.height = menu.scrollHeight + "px";
+            thisMenu.style.width = thisSize[0] + "px";
+            thisMenu.style.height = thisSize[1] + "px";
+            thisMenu.bg.style.width = thisSize[0] + "px";
+            thisMenu.bg.style.height = thisMenu.scrollHeight + "px";
         }, 100);
         setTimeout(() => {
-            menu.style.transition = "";
-            menu.style.width = thisSize[0] + "px";
-            menu.style.height = thisSize[1] + "px";
-            menu.style.overflowY = "auto";
+            thisMenu.style.transition = "";
+            thisMenu.style.width = thisSize[0] + "px";
+            thisMenu.style.height = thisSize[1] + "px";
+            thisMenu.style.overflowY = "auto";
         }, 500);
+        setTimeout(() => {
+            document.body.addEventListener("click", thisMenu.closeEvent);
+        }, 100);
         menu.setAttribute("ya-open", "1");
     }
 
@@ -131,13 +170,15 @@ export default class YaMenu extends HTMLElement {
      * @param {YaMenu|HTMLElement} menu 要關閉的 YaMenu 物件
      */
     static close(menu: YaMenu | HTMLElement) {
-        if (menu.getAttribute("ya-open") == "0") {
+        const thisMenu: YaMenu = menu as YaMenu;
+        if (thisMenu.getAttribute("ya-open") == "0") {
             return;
         }
-        (menu as YaMenu).aniPre(menu);
+        document.body.removeEventListener("click", thisMenu.closeEvent);
+        thisMenu.aniPre(thisMenu);
         setTimeout(() => {
-            menu.style.display = "none";
+            thisMenu.style.display = "none";
         }, 300);
-        menu.setAttribute("ya-open", "0");
+        thisMenu.setAttribute("ya-open", "0");
     }
 }

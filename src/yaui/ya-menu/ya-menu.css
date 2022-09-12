@@ -12,7 +12,7 @@
     display: block;
     position: relative;
     overflow: hidden;
-    /* margin-right: 30px; */
+    margin-right: 30px;
     user-select: none;
     cursor: pointer;
 }
@@ -21,7 +21,8 @@
     height: 60px;
     line-height: 60px;
     padding-left: 30px;
-    padding-right: 30px;
+    padding-right: 0px;
+    margin-right: 0px;
 }
 
 /* .ya-menu div:hover {
