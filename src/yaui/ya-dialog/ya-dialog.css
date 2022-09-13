@@ -1,12 +1,22 @@
 .ya-dialog {
     display: block;
     position: fixed;
+    width: 720px;
+    height: 500px;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 101;
+}
+
+/* .ya-dialog-view {
     top: calc(50% - 250px);
     width: 720px;
     left: calc(50% - 360px);
     height: 500px;
-    z-index: 101;
-}
+} */
 
 .ya-dialog-sidebar {
     display: block;
@@ -46,3 +56,12 @@
     margin-right: 0.5em;
     background-color: gray;
 }
+
+/* @media only screen and (max-width: 740px) {
+    .ya-dialog-sidebar {
+        display: none;
+    }
+    .ya-dialog-content {
+        left: 0;
+    }
+} */

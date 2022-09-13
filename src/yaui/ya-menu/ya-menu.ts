@@ -66,13 +66,16 @@ export default class YaMenu extends HTMLElement {
                         ? 30
                         : 0) +
                     "px";
-                item.addEventListener("click", () => {
+                item.addEventListener("click", (e) => {
                     this.delegate?.yaClickMenuItem(this, item, i);
                 });
             }
             this.style.display = "none";
             this.style.opacity = "1";
         }, 100);
+        this.addEventListener("click", (e) => {
+            e.stopPropagation();
+        });
     }
 
     /**
@@ -81,29 +84,29 @@ export default class YaMenu extends HTMLElement {
      * @param {MouseEvent} ev 點選事件
      */
     closeEvent = (ev: MouseEvent) => {
-        const clickX: number = ev.clientX;
-        const clickY: number = ev.clientY;
-        const divRect: DOMRect = this.getBoundingClientRect();
-        const divXS: number = divRect.x;
-        const divYS: number = divRect.y;
-        const divXE: number = divXS + divRect.width;
-        const divYE: number = divYS + divRect.height;
-        // console.log("click", clickX, clickY);
-        // console.log("divX", divXS, divXE);
-        // console.log("divY", divYS, divYE);
-        // console.log("clickX < divXS", clickX < divXS);
-        // console.log("clickX > divXE", clickX > divXE);
-        // console.log("clickY < divYS", clickY < divYS);
-        // console.log("clickY > divYE", clickY > divYE);
-        if (
-            clickX < divXS ||
-            clickX > divXE ||
-            clickY < divYS ||
-            clickY > divYE
-        ) {
+        // const clickX: number = ev.clientX;
+        // const clickY: number = ev.clientY;
+        // const divRect: DOMRect = this.getBoundingClientRect();
+        // const divXS: number = divRect.x;
+        // const divYS: number = divRect.y;
+        // const divXE: number = divXS + divRect.width;
+        // const divYE: number = divYS + divRect.height;
+        // // console.log("click", clickX, clickY);
+        // // console.log("divX", divXS, divXE);
+        // // console.log("divY", divYS, divYE);
+        // // console.log("clickX < divXS", clickX < divXS);
+        // // console.log("clickX > divXE", clickX > divXE);
+        // // console.log("clickY < divYS", clickY < divYS);
+        // // console.log("clickY > divYE", clickY > divYE);
+        // if (
+        //     clickX < divXS ||
+        //     clickX > divXE ||
+        //     clickY < divYS ||
+        //     clickY > divYE
+        // ) {
             YaMenu.close(this);
-            ev.stopPropagation();
-        }
+        //     ev.stopPropagation();
+        // }
     };
 
     /**
