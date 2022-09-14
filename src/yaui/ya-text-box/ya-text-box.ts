@@ -24,7 +24,7 @@ export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
         super();
         this.className = YaTextBox.control + " ya-share-box " + this.className;
         this.input = document.createElement("input");
-        this.input.readOnly = true;
+        this.input.readOnly = this.getAttribute("readonly") != null;
         if (this.className.indexOf("ya-text-box-password") >= 0) {
             this.input.type = "password";
         }
@@ -78,7 +78,7 @@ export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
             this.style.zIndex = "101";
             for (const menu of this.menus) {
                 // TODO: fixed
-                menu.style.top = "-1px";
+                menu.style.top = this.input.readOnly ? "-1px" : this.clientHeight + "px";
                 menu.style.left = "-1px";
                 menu.style.border = "1px solid #DCDCDC";
                 YaMenu.open(menu);
@@ -179,7 +179,7 @@ export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
                 }
                 placeholder.style.transition = "all 0.3s";
                 this.style.transition = "all 0.3s";
-                setTimeout(() => {
+                // setTimeout(() => {
                     if (
                         this.style.borderColor != "rgb(255, 0, 0)" &&
                         this.style.borderColor != "#F00"
@@ -195,7 +195,7 @@ export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
                             placeholder.innerText = text;
                         }
                     }
-                }, 100);
+                // }, 100);
                 setTimeout(() => {
                     placeholder.style.transition = "";
                     this.style.transition = "";

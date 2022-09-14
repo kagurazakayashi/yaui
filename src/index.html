@@ -81,7 +81,7 @@
           <tr>
             <td><span class="material-icons-outlined">dns</span></td>
             <td>
-              <ya-text-box class="ya-text-box-select" id="" value="server1" placeholder="服务器">
+              <ya-text-box class="ya-text-box-select" value="server1" placeholder="服务器">
                 <ya-menu>
                   <ya-menu-item value="server1">虚拟服务器1</ya-menu-item>
                   <ya-menu-item value="server2">虚拟服务器2</ya-menu-item>
@@ -94,6 +94,18 @@
                   <ya-menu-item value="server9">虚拟服务器9</ya-menu-item>
                 </ya-menu>
                 <div class="ya-text-box-rule" ya-mode="">必须指定一个服务器</div>
+              </ya-text-box>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="material-icons-outlined">event</span></td>
+            <td>
+              <ya-text-box class="ya-text-box-select" value="server1" placeholder="日期">
+                <div class="ya-text-box-rule">必须指定一个日期</div>
+                <ya-menu>
+                  <ya-time-selecter value="20:00"></ya-time-selecter>
+                  <ya-menu-item value="">确定</ya-menu-item>
+                </ya-menu>
               </ya-text-box>
             </td>
           </tr>
