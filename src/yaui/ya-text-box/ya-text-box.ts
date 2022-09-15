@@ -8,6 +8,9 @@ export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
     errBoxs: HTMLDivElement[] = [];
     input: HTMLInputElement;
     menus: YaMenu[] = [];
+    placeholder: HTMLSpanElement;
+    placeholderLock: boolean = false;
+    isSystemDialog: boolean = false;
 
     /**
      * 加载所需的样式等其他文件
@@ -25,13 +28,71 @@ export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
         this.className = YaTextBox.control + " ya-share-box " + this.className;
         this.input = document.createElement("input");
         this.input.readOnly = this.getAttribute("readonly") != null;
-        if (this.className.indexOf("ya-text-box-password") >= 0) {
-            this.input.type = "password";
+        const type: string = this.getAttribute("type") ?? "";
+        if (type.length > 0) {
+            this.input.type = type;
         }
         this.initPlaceholderText();
         this.initRules();
         this.initMenu();
         this.appendChild(this.input);
+        this.isSystemDialog =
+            type.indexOf("date") >= 0 || type.indexOf("time") >= 0;
+        if (this.isSystemDialog) {
+            const now: Date = new Date();
+            this.input.value = YaTextBox.inputDateTime(
+                now.getFullYear(),
+                now.getMonth() + 1,
+                now.getDate(),
+                now.getHours(),
+                now.getMinutes()
+            );
+        }
+        this.placeholderLock = this.isSystemDialog;
+        if (this.placeholderLock) {
+            this.placeholderMode(true, this.placeholder);
+        }
+    }
+
+    /**
+     * 建立一個 date/time 型別 input 能夠識別的時間
+     * @param {number} year 年
+     * @param {number} month 月
+     * @param {number} day 日
+     * @param {number} hour 時
+     * @param {number} minute 分
+     * @param {number} second 秒
+     * @return {string} 能夠識別的時間
+     */
+    static inputDateTime(
+        year: number = -1,
+        month: number = -1,
+        day: number = -1,
+        hour: number = -1,
+        minute: number = -1,
+        second: number = -1
+    ): string {
+        // "yyyy-MM-ddThh:mm"
+        let str: string = "";
+        if (year > -1) {
+            str += year.toString().padStart(4, "0");
+        }
+        if (month > -1) {
+            str += "-" + month.toString().padStart(2, "0");
+        }
+        if (day > -1) {
+            str += "-" + day.toString().padStart(2, "0");
+        }
+        if (hour > -1) {
+            str += "T" + hour.toString().padStart(2, "0");
+        }
+        if (minute > -1) {
+            str += ":" + minute.toString().padStart(2, "0");
+        }
+        if (second > -1) {
+            str += ":" + second.toString().padStart(2, "0");
+        }
+        return str;
     }
 
     /**
@@ -78,7 +139,9 @@ export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
             this.style.zIndex = "101";
             for (const menu of this.menus) {
                 // TODO: fixed
-                menu.style.top = this.input.readOnly ? "-1px" : this.clientHeight + "px";
+                menu.style.top = this.input.readOnly
+                    ? "-1px"
+                    : this.clientHeight + "px";
                 menu.style.left = "-1px";
                 menu.style.border = "1px solid #DCDCDC";
                 YaMenu.open(menu);
@@ -131,19 +194,69 @@ export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
      * @param {boolean} isON 標題是否移動到文字框上方
      * @param {HTMLSpanElement} placeholder 標題
      */
-    placeholderMode(isON: boolean, placeholder: HTMLSpanElement|null=null) {
-        placeholder ??= this.getElementsByClassName(YaTextBox.control + "-placeholder")[0] as HTMLSpanElement;
+    placeholderMode(isON: boolean, placeholder: HTMLSpanElement | null = null) {
+        placeholder ??= this.getElementsByClassName(
+            YaTextBox.control + "-placeholder"
+        )[0] as HTMLSpanElement;
         if (isON) {
             placeholder.style.color = "#2E86C1";
             placeholder.style.fontSize = "12px";
             placeholder.style.top = "-20px";
             placeholder.style.left = "5px";
         } else {
+            if (this.placeholderLock) {
+                return;
+            }
             placeholder.style.color = "gray";
             placeholder.style.fontSize = "medium";
             placeholder.style.top = "5px";
             placeholder.style.left = "5px";
         }
+    }
+
+    focus() {
+        this.placeholder.style.transition = "all 0.3s";
+        this.style.transition = "all 0.3s";
+        setTimeout(() => {
+            this.style.borderColor = "#2E86C1";
+            this.placeholderMode(true, this.placeholder);
+            const text: string = this.placeholder.innerText;
+            if (text.charAt(text.length - 1) != ":") {
+                this.placeholder.innerText = text + ":";
+            }
+        }, 100);
+        setTimeout(() => {
+            this.placeholder.style.transition = "";
+            this.style.transition = "";
+        }, 500);
+    }
+
+    blur() {
+        this.input.style.zIndex = "0";
+        if (this.input.value.length > 0) {
+            return;
+        }
+        this.placeholder.style.transition = "all 0.3s";
+        this.style.transition = "all 0.3s";
+        if (
+            this.style.borderColor != "rgb(255, 0, 0)" &&
+            this.style.borderColor != "#F00"
+        ) {
+            this.style.borderColor = "gray";
+        }
+        this.placeholderMode(false, this.placeholder);
+        let text: string = this.placeholder.innerText;
+        for (let i = 0; i < text.length; i++) {
+            if (text.charAt(text.length - 1) == ":") {
+                text = text.substring(0, text.length - 1);
+            } else {
+                this.placeholder.innerText = text;
+            }
+        }
+        setTimeout(() => {
+            this.placeholder.style.transition = "";
+            this.style.transition = "";
+        }, 500);
     }
 
     /**
@@ -152,54 +265,15 @@ export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
     initPlaceholderText() {
         const placeholderText: string = this.getAttribute("placeholder") ?? "";
         if (placeholderText.length > 0) {
-            const placeholder: HTMLSpanElement = document.createElement("span");
-            placeholder.className = YaTextBox.control + "-placeholder";
-            placeholder.innerText = placeholderText;
-            this.appendChild(placeholder);
+            this.placeholder = document.createElement("span");
+            this.placeholder.className = YaTextBox.control + "-placeholder";
+            this.placeholder.innerText = placeholderText;
+            this.appendChild(this.placeholder);
             this.input.addEventListener("focus", () => {
-                placeholder.style.transition = "all 0.3s";
-                this.style.transition = "all 0.3s";
-                setTimeout(() => {
-                    this.style.borderColor = "#2E86C1";
-                    this.placeholderMode(true, placeholder);
-                    const text: string = placeholder.innerText;
-                    if (text.charAt(text.length - 1) != ":") {
-                        placeholder.innerText = text + ":";
-                    }
-                }, 100);
-                setTimeout(() => {
-                    placeholder.style.transition = "";
-                    this.style.transition = "";
-                }, 500);
+                this.focus();
             });
             this.input.addEventListener("blur", () => {
-                this.input.style.zIndex = "0";
-                if (this.input.value.length > 0) {
-                    return;
-                }
-                placeholder.style.transition = "all 0.3s";
-                this.style.transition = "all 0.3s";
-                // setTimeout(() => {
-                    if (
-                        this.style.borderColor != "rgb(255, 0, 0)" &&
-                        this.style.borderColor != "#F00"
-                    ) {
-                        this.style.borderColor = "gray";
-                    }
-                    this.placeholderMode(false, placeholder);
-                    let text: string = placeholder.innerText;
-                    for (let i = 0; i < text.length; i++) {
-                        if (text.charAt(text.length - 1) == ":") {
-                            text = text.substring(0, text.length - 1);
-                        } else {
-                            placeholder.innerText = text;
-                        }
-                    }
-                // }, 100);
-                setTimeout(() => {
-                    placeholder.style.transition = "";
-                    this.style.transition = "";
-                }, 500);
+                this.blur();
             });
             this.input.addEventListener("input", () => {
                 const val: string = this.input.value;

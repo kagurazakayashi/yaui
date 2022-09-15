@@ -75,13 +75,12 @@
     </div>
     <div class="ya-dialog-content">
       <h1><span class="ya-dialog-title-block"></span>用户登录</h1>
-      <p>&emsp;</p>
       <table class="loginTB">
         <tbody>
           <tr>
             <td><span class="material-icons-outlined">dns</span></td>
             <td>
-              <ya-text-box class="ya-text-box-select" value="server1" placeholder="服务器">
+              <ya-text-box class="ya-text-box-select" id="" value="server1" placeholder="服务器">
                 <ya-menu>
                   <ya-menu-item value="server1">虚拟服务器1</ya-menu-item>
                   <ya-menu-item value="server2">虚拟服务器2</ya-menu-item>
@@ -98,18 +97,6 @@
             </td>
           </tr>
           <tr>
-            <td><span class="material-icons-outlined">event</span></td>
-            <td>
-              <ya-text-box class="ya-text-box-select" value="server1" placeholder="日期">
-                <div class="ya-text-box-rule">必须指定一个日期</div>
-                <ya-menu>
-                  <ya-time-selecter value="20:00"></ya-time-selecter>
-                  <ya-menu-item value="">确定</ya-menu-item>
-                </ya-menu>
-              </ya-text-box>
-            </td>
-          </tr>
-          <tr>
             <td><span class="material-icons-outlined">person</span></td>
             <td>
               <ya-text-box value="demo" placeholder="用户名">
@@ -121,8 +108,16 @@
           <tr>
             <td><span class="material-icons-outlined">lock</span></td>
             <td>
-              <ya-text-box class="ya-text-box-password" value="password" placeholder="密码">
+              <ya-text-box type="password" placeholder="密码">
                 <div class="ya-text-box-rule">必须指定一个密码</div>
+              </ya-text-box>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="material-icons-outlined">event</span></td>
+            <td>
+              <ya-text-box type="datetime-local" placeholder="时间日期">
+                <div class="ya-text-box-rule">必须指定一个时间</div>
               </ya-text-box>
             </td>
           </tr>

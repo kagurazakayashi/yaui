@@ -8,7 +8,6 @@ import YaView from "./yaui/ya-view/ya-view";
 import YaScrollView from "./yaui/ya-scroll-view/ya-scroll-view";
 import YaDialog from "./yaui/ya-dialog/ya-dialog";
 import YaTextBox from "./yaui/ya-text-box/ya-text-box";
-import YaTimeSelecter from "./yaui/ya-time-selecter/ya-time-selecter";
 
 /**
  * 網頁載入完成後要執行的程式碼
@@ -25,7 +24,6 @@ export default class Main {
         YAUI.load(YaScrollView);
         YAUI.load(YaDialog);
         YAUI.load(YaTextBox);
-        YAUI.load(YaTimeSelecter);
         // 點選圖示按鈕，開啟一個選單
         const btnMainMenu = document.getElementById("btnMainMenu");
         btnMainMenu.addEventListener("click", () => {
