@@ -9,6 +9,7 @@ export default class YaMenu extends HTMLElement {
     static control = "ya-menu";
     bg: HTMLSpanElement;
     delegate: YaMenuDelegate | null = null;
+    compensate: number[] = [0, 0, 0, 0]; //XYWH
 
     /**
      * 加载所需的样式等其他文件
@@ -104,7 +105,7 @@ export default class YaMenu extends HTMLElement {
         //     clickY < divYS ||
         //     clickY > divYE
         // ) {
-            YaMenu.close(this);
+        YaMenu.close(this);
         //     ev.stopPropagation();
         // }
     };
@@ -151,15 +152,16 @@ export default class YaMenu extends HTMLElement {
         // const toSizeArr: string[] = toSize.split(",");
         thisMenu.aniPre(thisMenu);
         setTimeout(() => {
-            thisMenu.style.width = thisSize[0] + "px";
-            thisMenu.style.height = thisSize[1] + "px";
-            thisMenu.bg.style.width = thisSize[0] + "px";
+            thisMenu.style.width = thisSize[0] + thisMenu.compensate[2] + "px";
+            thisMenu.style.height = thisSize[1] + thisMenu.compensate[3] + "px";
+            thisMenu.bg.style.width =
+                thisSize[0] + thisMenu.compensate[2] + "px";
             thisMenu.bg.style.height = thisMenu.scrollHeight + "px";
         }, 100);
         setTimeout(() => {
             thisMenu.style.transition = "";
-            thisMenu.style.width = thisSize[0] + "px";
-            thisMenu.style.height = thisSize[1] + "px";
+            thisMenu.style.width = thisSize[0] + thisMenu.compensate[2] + "px";
+            thisMenu.style.height = thisSize[1] + thisMenu.compensate[3] + "px";
             thisMenu.style.overflowY = "auto";
         }, 500);
         setTimeout(() => {

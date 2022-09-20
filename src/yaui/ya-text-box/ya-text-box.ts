@@ -138,12 +138,12 @@ export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
             }
             this.style.zIndex = "101";
             for (const menu of this.menus) {
-                // TODO: fixed
-                menu.style.top = this.input.readOnly
-                    ? "-1px"
-                    : this.clientHeight + "px";
+                const fixedHeight: number = this.input.readOnly
+                ? -1 : this.clientHeight;
+                menu.style.top = fixedHeight + "px";
                 menu.style.left = "-1px";
                 menu.style.border = "1px solid #DCDCDC";
+                menu.compensate = [0, 0, 0, 0-fixedHeight];
                 YaMenu.open(menu);
             }
         });
