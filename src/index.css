@@ -31,6 +31,12 @@ body {
     width: 200px;
 }
 
+.btnbar {
+    padding-top: 15px;
+    padding-right: 20px;
+    text-align: right;
+}
+
 /* .accountMenuHead ya-icon-button 
 .accountMenuHead .mico  {
   width: 60px;
