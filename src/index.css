@@ -37,6 +37,11 @@ body {
     text-align: right;
 }
 
+#saveSession {
+    width: 70%;
+    text-align: left;
+}
+
 /* .accountMenuHead ya-icon-button 
 .accountMenuHead .mico  {
   width: 60px;
