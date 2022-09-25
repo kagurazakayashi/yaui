@@ -1,0 +1,3 @@
+[submodule "src/libYAUI"]
+	path = src/libYAUI
+	url = https://github.com/kagurazakayashi/yaui.git

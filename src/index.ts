@@ -1,14 +1,14 @@
 // 先載入 YAUI 主類
-import YAUI from "./yaui/yaui";
+import YAUI from "./libYAUI/yaui";
 // 再載入所有需要用到的控制元件類
-import YaTopAppBar from "./yaui/ya-top-app-bar/ya-top-app-bar";
-import YaIconButton from "./yaui/ya-icon-button/ya-icon-button";
-import YaMenu from "./yaui/ya-menu/ya-menu";
-import YaView from "./yaui/ya-view/ya-view";
-import YaScrollView from "./yaui/ya-scroll-view/ya-scroll-view";
-import YaDialog from "./yaui/ya-dialog/ya-dialog";
-import YaTextBox from "./yaui/ya-text-box/ya-text-box";
-import YaButton from "./yaui/ya-button/ya-button";
+import YaTopAppBar from "./libYAUI/ya-top-app-bar/ya-top-app-bar";
+import YaIconButton from "./libYAUI/ya-icon-button/ya-icon-button";
+import YaMenu from "./libYAUI/ya-menu/ya-menu";
+import YaView from "./libYAUI/ya-view/ya-view";
+import YaScrollView from "./libYAUI/ya-scroll-view/ya-scroll-view";
+import YaDialog from "./libYAUI/ya-dialog/ya-dialog";
+import YaTextBox from "./libYAUI/ya-text-box/ya-text-box";
+import YaButton from "./libYAUI/ya-button/ya-button";
 
 /**
  * 網頁載入完成後要執行的程式碼
