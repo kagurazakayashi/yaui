@@ -10,6 +10,7 @@ import YaDialog from "./libYAUI/ya-dialog/ya-dialog";
 import YaTextBox from "./libYAUI/ya-text-box/ya-text-box";
 import YaButton from "./libYAUI/ya-button/ya-button";
 import YaSwitch from "./libYAUI/ya-switch/ya-switch";
+import YaSnackbar from "./libYAUI/ya-snackbar/ya-snackbar";
 
 /**
  * 網頁載入完成後要執行的程式碼
@@ -28,6 +29,7 @@ export default class Main {
         YAUI.load(YaTextBox);
         YAUI.load(YaButton);
         YAUI.load(YaSwitch);
+        YAUI.loadF(YaSnackbar);
         // 點選圖示按鈕，開啟一個選單
         const btnMainMenu = document.getElementById("btnMainMenu");
         btnMainMenu.addEventListener("click", () => {
@@ -43,6 +45,10 @@ export default class Main {
             accountMenu.style.right =
                 document.body.clientWidth - appBar.clientWidth + "px";
             YaMenu.open(accountMenu);
+        });
+        const submit = document.getElementById("submit");
+        submit.addEventListener("click", () => {
+            YaSnackbar.show("请继续操作。", "提交成功", "info#gray");
         });
     }
 }
