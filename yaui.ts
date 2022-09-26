@@ -13,7 +13,7 @@ export default class YaShare {
     }
 
     /**
-     * 控制元件載入
+     * 控制元件載入（HTML型控制元件）
      * 使用本函式載入需要用到的控制元件程式碼，快捷並且可以防止重複匯入一些檔案。
      * 示例：
      *     import YaTopAppBar from './yaui/ya-top-app-bar/ya-top-app-bar';
@@ -29,15 +29,25 @@ export default class YaShare {
         const control: any = constructor;
         const controlName: string = control.control;
         window.customElements.define(control.control, constructor, options);
-        let isLoaded = false;
         for (const loaded of window.yaLoaded) {
             if (loaded == controlName) {
-                isLoaded = true;
-                break;
+                return;
             }
         }
-        if (!isLoaded) {
-            control.loadFile();
+        control.loadFile();
+    }
+
+    /**
+     * 控制元件載入（函式型控制元件）
+     * @param constructor 控制元件的匯入類
+     */
+    static loadF(constructor: any) {
+        const controlName: string = constructor.control;
+        for (const loaded of window.yaLoaded) {
+            if (loaded == controlName) {
+                return;
+            }
         }
+        constructor.loadFile();
     }
 }

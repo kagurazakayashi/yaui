@@ -1,0 +1,24 @@
+.ya-snackbar {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    width: 320px;
+    padding: 20px;
+    z-index: 200;
+}
+
+.ya-snackbar-title {
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+
+.ya-snackbar-icon {
+    position: relative;
+    float: left;
+    font-size: 40px;
+    padding-right: 10px;
+}
+
+.ya-snackbar-icontop {
+    padding-top: 10px;
+}
