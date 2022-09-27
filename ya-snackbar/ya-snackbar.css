@@ -1,10 +1,32 @@
-.ya-snackbar {
+.ya-snackbar-box {
     position: fixed;
-    right: 20px;
-    top: 20px;
-    width: 320px;
-    padding: 20px;
+    display: block;
+    right: 0px;
+    top: 0px;
+    padding-top: 20px;
+    width: 300px;
+    height: calc(100% - 20px);
     z-index: 200;
+    overflow: hidden;
+}
+
+.ya-snackbar {
+    position: relative;
+    display: block;
+    width: calc(100% - 60px);
+    right: -100%;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s linear;
+    cursor: pointer;
+}
+
+.ya-snackbar:hover {
+    background-color: #ffffff66;
+}
+
+.ya-snackbar .ya-share-box-bg {
+    background-color: #ffffff99;
 }
 
 .ya-snackbar-title {

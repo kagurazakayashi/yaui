@@ -10,7 +10,7 @@ export default class YaSnackbar {
     }
 
     /**
-     *
+     * 顯示 Snackbar
      */
     static show(
         text: string,
@@ -18,11 +18,20 @@ export default class YaSnackbar {
         icon: string = "info",
         duration: number = 3000
     ) {
+        const snackboxs: HTMLCollectionOf<Element> =
+            document.getElementsByClassName(YaSnackbar.control + "-box");
+        let snackbox: HTMLDivElement;
+        if (snackboxs.length == 0) {
+            snackbox = document.createElement("div");
+            snackbox.className = YaSnackbar.control + "-box";
+            document.body.appendChild(snackbox);
+        } else {
+            snackbox = snackboxs[0] as HTMLDivElement;
+        }
         const snackbar: HTMLSpanElement = document.createElement("span");
         snackbar.className = YaSnackbar.control + " ya-share-box";
         const bg: HTMLSpanElement = document.createElement("span");
         bg.className = "ya-share-box-bg";
-        bg.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
         snackbar.appendChild(bg);
         if (icon.length > 0) {
             const iconInfo: string[] = icon.split("#");
@@ -61,6 +70,41 @@ export default class YaSnackbar {
             textBox.className += YaSnackbar.control + "-icontop";
         }
         snackbar.appendChild(textBox);
-        document.body.appendChild(snackbar);
+        snackbox.appendChild(snackbar);
+        const moveX: number = snackbar.clientWidth + 20;
+        setTimeout(() => {
+            if (snackbar)
+                snackbar.style.transform = `translate(-${moveX}px, 0)`;
+        }, 100);
+        const closeTransform: string = `translate(${moveX}px, 0)`;
+        setTimeout(() => {
+            if (snackbar) snackbar.style.transform = closeTransform;
+        }, 100 + duration);
+        setTimeout(() => {
+            if (snackbar) snackbar.remove();
+            YaSnackbar.autoRemoveBox();
+        }, 100 + duration + 300);
+        snackbar.addEventListener("click", () => {
+            if (snackbar) snackbar.style.transform = closeTransform;
+            setTimeout(() => {
+                if (snackbar) snackbar.remove();
+                YaSnackbar.autoRemoveBox();
+            }, 300);
+        });
+    }
+
+    static autoRemoveBox() {
+        const snackbars: HTMLCollectionOf<Element> =
+            document.getElementsByClassName(YaSnackbar.control);
+        if (snackbars.length == 0) {
+            const snackboxs: HTMLCollectionOf<Element> =
+                document.getElementsByClassName(YaSnackbar.control + "-box");
+            for (const key in snackboxs) {
+                if (Object.prototype.hasOwnProperty.call(snackboxs, key)) {
+                    const snackbox: Element = snackboxs[key];
+                    snackbox.remove();
+                }
+            }
+        }
     }
 }
