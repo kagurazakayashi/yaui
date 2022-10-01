@@ -1,24 +1,46 @@
 .ya-snackbar-box {
     position: fixed;
     display: block;
-    right: 0px;
-    top: 0px;
     padding-top: 20px;
     width: 300px;
-    height: calc(100% - 20px);
+    max-height: calc(100% - 20px);
     z-index: 200;
     overflow: hidden;
+}
+
+.ya-snackbar-box-l {
+    left: 0;
+}
+
+.ya-snackbar-box-r {
+    right: 0;
+}
+
+.ya-snackbar-box-t {
+    top: 0;
+}
+
+.ya-snackbar-box-b {
+    bottom: 0;
 }
 
 .ya-snackbar {
     position: relative;
     display: block;
     width: calc(100% - 60px);
-    right: -100%;
     padding: 20px;
     margin-bottom: 20px;
-    transition: transform 0.3s linear;
+    transition-property: transform;
+    transition-timing-function: linear;
     cursor: pointer;
+}
+
+.ya-snackbar-l {
+    left: -100%;
+}
+
+.ya-snackbar-r {
+    right: -100%;
 }
 
 .ya-snackbar:hover {
