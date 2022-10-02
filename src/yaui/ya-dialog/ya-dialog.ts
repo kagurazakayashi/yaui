@@ -2,7 +2,7 @@
  * 自定義對話方塊
  */
 export default class YaDialog extends HTMLElement {
-    static control = "ya-dialog";
+    static control = "ya-dialog-login";
 
     /**
      * 加载所需的样式等其他文件
@@ -18,7 +18,7 @@ export default class YaDialog extends HTMLElement {
     constructor() {
         super();
         this.className = YaDialog.control + " " + this.className;
-        // ya-dialog-add-side
+        // ya-dialog-login-add-side
         const sidebars: HTMLCollectionOf<Element> = this.getElementsByClassName(
             YaDialog.control + "-sidebar"
         );

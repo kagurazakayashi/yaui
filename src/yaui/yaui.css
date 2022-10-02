@@ -73,6 +73,6 @@ body {
     height: 100%;
 }
 
-.ya-view h1, .ya-dialog h1 {
+.ya-view h1, .ya-dialog-login h1 {
     font-weight: lighter;
 }

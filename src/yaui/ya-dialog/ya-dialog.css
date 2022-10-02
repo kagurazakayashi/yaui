@@ -1,4 +1,4 @@
-.ya-dialog {
+.ya-dialog-login {
     display: block;
     position: fixed;
     width: 720px;
@@ -11,14 +11,14 @@
     z-index: 101;
 }
 
-/* .ya-dialog-view {
+/* .ya-dialog-login-view {
     top: calc(50% - 250px);
     width: 720px;
     left: calc(50% - 360px);
     height: 500px;
 } */
 
-.ya-dialog-sidebar {
+.ya-dialog-login-sidebar {
     display: block;
     position: absolute;
     top: 0;
@@ -32,7 +32,7 @@
     text-align: center;
 }
 
-.ya-dialog-content {
+.ya-dialog-login-content {
     display: block;
     position: absolute;
     top: 0;
@@ -44,12 +44,12 @@
     padding: 20px;
 }
 
-.ya-dialog-logo {
+.ya-dialog-login-logo {
     padding-top: 15%;
     width: 60%;
 }
 
-.ya-dialog-title-block {
+.ya-dialog-login-title-block {
     display: inline-block;
     height: 0.8em;
     width: 5px;
@@ -58,10 +58,10 @@
 }
 
 /* @media only screen and (max-width: 740px) {
-    .ya-dialog-sidebar {
+    .ya-dialog-login-sidebar {
         display: none;
     }
-    .ya-dialog-content {
+    .ya-dialog-login-content {
         left: 0;
     }
 } */

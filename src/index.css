@@ -37,6 +37,10 @@ body {
     text-align: right;
 }
 
+#showdialog {
+    margin-top: 50px;
+}
+
 #saveSession {
     width: 70%;
     text-align: left;

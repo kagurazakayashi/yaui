@@ -6,16 +6,19 @@ import YaIconButton from "./libYAUI/ya-icon-button/ya-icon-button";
 import YaMenu from "./libYAUI/ya-menu/ya-menu";
 import YaView from "./libYAUI/ya-view/ya-view";
 import YaScrollView from "./libYAUI/ya-scroll-view/ya-scroll-view";
-import YaDialog from "./libYAUI/ya-dialog/ya-dialog";
+import YaDialogLogin from "./libYAUI/ya-dialog-login/ya-dialog-login";
 import YaTextBox from "./libYAUI/ya-text-box/ya-text-box";
 import YaButton from "./libYAUI/ya-button/ya-button";
 import YaSwitch from "./libYAUI/ya-switch/ya-switch";
 import YaSnackbar from "./libYAUI/ya-snackbar/ya-snackbar";
+import YaDialog from "./libYAUI/ya-dialog/ya-dialog";
 
 /**
  * 網頁載入完成後要執行的程式碼
  */
 export default class Main {
+    dialog: YaDialog | null = null;
+
     constructor() {
         // 先載入 YAUI 主類
         YAUI.init();
@@ -25,11 +28,12 @@ export default class Main {
         YAUI.load(YaMenu);
         YAUI.load(YaView);
         YAUI.load(YaScrollView);
-        YAUI.load(YaDialog);
+        YAUI.load(YaDialogLogin);
         YAUI.load(YaTextBox);
         YAUI.load(YaButton);
         YAUI.load(YaSwitch);
         YAUI.loadF(YaSnackbar);
+        YAUI.loadF(YaDialog);
         // 點選圖示按鈕，開啟一個選單
         const btnMainMenu = document.getElementById("btnMainMenu");
         btnMainMenu.addEventListener("click", () => {
@@ -46,9 +50,21 @@ export default class Main {
                 document.body.clientWidth - appBar.clientWidth + "px";
             YaMenu.open(accountMenu);
         });
+        // YaSnackbar
         const submit = document.getElementById("submit");
         submit.addEventListener("click", () => {
             YaSnackbar.show("请继续操作。", "提交成功", "info#gray");
+        });
+        // YaDialog
+        const showdialog = document.getElementById("showdialog");
+        showdialog.addEventListener("click", () => {
+            if (this.dialog) {
+                this.dialog.close();
+                this.dialog = null;
+            } else {
+                this.dialog = new YaDialog();
+                this.dialog.show();
+            }
         });
     }
 }

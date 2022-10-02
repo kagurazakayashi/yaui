@@ -69,12 +69,12 @@
       <span>登出</span>
     </ya-menu-item>
   </ya-menu>
-  <ya-dialog class="ya-dialog-view">
-    <div class="ya-dialog-sidebar">
-      <img src="images/logo.png" class="ya-dialog-logo" alt="logo" />
+  <ya-dialog-login class="ya-dialog-login-view">
+    <div class="ya-dialog-login-sidebar">
+      <img src="images/logo.png" class="ya-dialog-login-logo" alt="logo" />
     </div>
-    <div class="ya-dialog-content">
-      <h1><span class="ya-dialog-title-block"></span>用户登录</h1>
+    <div class="ya-dialog-login-content">
+      <h1><span class="ya-dialog-login-title-block"></span>用户登录</h1>
       <table class="loginTB">
         <tbody>
           <tr>
@@ -126,9 +126,10 @@
       <div class="btnbar">
         <ya-switch size="40" id="saveSession" value="1">记住密码</ya-switch>
         <ya-button id="submit"><span class="material-icons-outlined">person</span> 提交</ya-button>
+        <ya-button id="showdialog"><span class="material-icons-outlined">open_in_browser</span> 弹框</ya-button>
       </div>
     </div>
-  </ya-dialog>
+  </ya-dialog-login>
   <!-- <div class="fill"></div> -->
   <!-- <ya-scroll-view class="ya-full">
     <ya-view class="ya-view-article">
