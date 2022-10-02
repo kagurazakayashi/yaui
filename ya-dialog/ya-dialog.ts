@@ -1,38 +1,38 @@
 /**
- * 自定義對話方塊
+ * 對話方塊（函式型）
  */
-export default class YaDialog extends HTMLElement {
+export default class Dialog {
     static control = "ya-dialog";
+    dialog: HTMLDivElement;
 
     /**
      * 加载所需的样式等其他文件
      * 該函式由 YAUI 類呼叫，無需手工執行
      */
     static loadFile() {
-        require(`./${YaDialog.control}.css`);
+        require(`./${Dialog.control}.css`);
     }
 
     /**
-     * 對該控制元件的 UI 和行為進行準備工作
+     * 建構函式
      */
     constructor() {
-        super();
-        this.className = YaDialog.control + " " + this.className;
-        // ya-dialog-add-side
-        const sidebars: HTMLCollectionOf<Element> = this.getElementsByClassName(
-            YaDialog.control + "-sidebar"
-        );
-        const contents: HTMLCollectionOf<Element> = this.getElementsByClassName(
-            YaDialog.control + "-content"
-        );
-        for (const key in contents) {
-            if (Object.prototype.hasOwnProperty.call(contents, key)) {
-                const content: HTMLElement = contents[key] as HTMLElement;
-                content.className += " ya-share-box";
-                const bg: HTMLSpanElement = document.createElement("span");
-                bg.className = "ya-share-box-bg";
-                content.insertBefore(bg, content.firstChild);
-            }
-        }
+        this.dialog = document.createElement("div");
+        this.dialog.className = Dialog.control + " ya-share-box";
     }
+
+    /**
+     * 顯示此對話方塊
+     */
+    show() {
+        document.body.appendChild(this.dialog);
+    }
+
+    /**
+     * 關閉並銷燬對話方塊
+     */
+    close() {
+        this.dialog.remove();
+    }
+
 }

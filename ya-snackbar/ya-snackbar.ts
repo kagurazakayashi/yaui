@@ -1,3 +1,6 @@
+/**
+ * 臨時彈出資訊框（函式型）
+ */
 export default class YaSnackbar {
     static control = "ya-snackbar";
 
