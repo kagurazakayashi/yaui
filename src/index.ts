@@ -17,8 +17,6 @@ import YaDialog from "./libYAUI/ya-dialog/ya-dialog";
  * 網頁載入完成後要執行的程式碼
  */
 export default class Main {
-    dialog: YaDialog | null = null;
-
     constructor() {
         // 先載入 YAUI 主類
         YAUI.init();
@@ -58,13 +56,84 @@ export default class Main {
         // YaDialog
         const showdialog = document.getElementById("showdialog");
         showdialog.addEventListener("click", () => {
-            if (this.dialog) {
-                this.dialog.close();
-                this.dialog = null;
-            } else {
-                this.dialog = new YaDialog();
-                this.dialog.show();
-            }
+            const btnTest = document.createElement("button");
+            btnTest.id = "bt";
+            btnTest.className = "btc";
+            btnTest.style.color = "red";
+            btnTest.innerText = "clear contain";
+
+            YaDialog.show(
+                {
+                    clickbackgroudClose: true,
+                    title: { value: "aaa" },
+                    contain: {
+                        value: "bbb<br/>bbb<br/>bbb<br/>bbb<br/>bbb<br/>",
+                        style: {
+                            textAlign: "center",
+                            maxHeight: "500px",
+                        },
+                    },
+                    ok: {
+                        // show: false,
+                        value: "yes",
+                        click: function () {
+                            console.log("ok!");
+                        },
+                        // isClose: true, //默认值false
+                    },
+                    cancel: {
+                        // show: false,
+                        value: "no!",
+                        click: function () {
+                            console.log("cancel!");
+                        },
+                        style: {
+                            fontSize: "12pt",
+                        },
+                        // isClose: false, //默认值true
+                    },
+                    addBtn: true,
+                    foot: {
+                        items: [
+                            {
+                                element: btnTest,
+                                click: () => {
+                                    document.getElementById(
+                                        "ya-dialog-toast-contain"
+                                    ).innerHTML = "";
+                                },
+                                // isClose: true,
+                            },
+                            {
+                                tagName: "button",
+                                id: "btnTest",
+                                class: "btnC",
+                                value: "add Button Test",
+                                click: () => {
+                                    document.getElementById(
+                                        "ya-dialog-toast-contain"
+                                    ).innerHTML += "aa<br/>";
+                                },
+                                style: {
+                                    minWidth: "150px",
+                                    fontSize: "12pt",
+                                },
+                            },
+                        ],
+                        style: {
+                            borderRadius: "25px",
+                        },
+                    },
+                    style: {
+                        padding: "0px",
+                        // backgroundColor: "yellow",
+                        maxHeight: "50%",
+                        // width: "200px",
+                        // height: "150px",
+                    },
+                },
+                false
+            );
         });
     }
 }
