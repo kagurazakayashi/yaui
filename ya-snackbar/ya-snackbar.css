@@ -8,6 +8,15 @@
     overflow: hidden;
 }
 
+.ya-snackbar-box-t {
+    top: -10px;
+    max-height: calc(100% + 20px);
+}
+
+.ya-snackbar-box-b {
+    bottom: 0;
+}
+
 .ya-snackbar-box-l {
     left: 0;
 }
@@ -16,12 +25,12 @@
     right: 0;
 }
 
-.ya-snackbar-box-t {
-    top: 0;
-}
-
-.ya-snackbar-box-b {
-    bottom: 0;
+.ya-snackbar-box-c {
+    padding-top: 0px;
+    left: calc(50% - 150px);
+    text-align: center;
+    width: 320px;
+    background-color: pink;
 }
 
 .ya-snackbar {
@@ -35,12 +44,8 @@
     cursor: pointer;
 }
 
-.ya-snackbar-l {
-    left: -100%;
-}
-
-.ya-snackbar-r {
-    right: -100%;
+.ya-snackbar-c {
+    margin-left: 10px;
 }
 
 .ya-snackbar:hover {

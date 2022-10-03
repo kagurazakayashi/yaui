@@ -210,7 +210,6 @@ export default class Dialog {
 
         let footBtnMaxWidth = 0.0;
         let footBtnAllWidth = 0.0;
-        let footBtnAllWidth2 = 0.0;
         let footBtnMaxHeight = 0.0;
         btnList.forEach((item) => {
             const btn = document.getElementById(item.id);
@@ -226,8 +225,6 @@ export default class Dialog {
                 btn.style.width = "auto";
             }
             footBtnAllWidth += btn.offsetWidth;
-            footBtnAllWidth2 += btn.clientWidth;
-            console.log(btn.offsetWidth, ">>", footBtnAllWidth);
             if (btn.offsetWidth > footBtnMaxWidth) {
                 footBtnMaxWidth = btn.offsetWidth;
             }
@@ -238,19 +235,17 @@ export default class Dialog {
 
         const tFoot = document.getElementById("ya-dialog-toast-foot");
 
+        if (footBtnAllWidth + 16 < tFoot.offsetWidth) {
+            tFoot.style.borderTop = "none";
+        }
         if (btnEqualWidth) {
-            footBtnAllWidth = 0;
             btnList.forEach((item) => {
                 const btn = document.getElementById(item.id);
                 if (btn == null) {
                     return;
                 }
                 btn.style.width = footBtnMaxWidth + "px";
-                footBtnAllWidth += btn.offsetWidth;
             });
-        }
-        if (footBtnAllWidth + 16 < tFoot.offsetWidth) {
-            tFoot.style.borderTop = "none";
         }
 
         const tMain = document.getElementById("ya-dialog-toast");
