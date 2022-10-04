@@ -46,7 +46,10 @@ export default class YaTopAppBar extends HTMLElement {
      */
     addMoveEventListener() {
         // 監聽滑鼠滾輪
-        document.addEventListener("mousewheel", (ev: WheelEvent) => {
+        // document.addEventListener("mousewheel", (e: WheelEvent) => {
+        // }
+        document.addEventListener("mousewheel", (e: Event) => {
+            const ev: WheelEvent = e as WheelEvent;
             const top: number = ev.deltaY;
             if (top < 0) {
                 // console.log("↑", top);

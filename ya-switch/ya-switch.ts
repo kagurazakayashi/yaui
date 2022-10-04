@@ -39,7 +39,7 @@ export default class YaSwitch extends HTMLElement {
         span.appendChild(i);
         label.appendChild(span);
         const width: number = this.getAttribute("size")
-            ? parseInt(this.getAttribute("size"))
+            ? parseInt(this.getAttribute("size") ?? "40")
             : 40;
         const height: number = width / 2;
         label.style.width = width + "px";

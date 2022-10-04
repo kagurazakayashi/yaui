@@ -28,11 +28,11 @@ export default class Dialog {
         btnEqualWidth = true,
         btnEqualHeight = true
     ) {
-        const bodyOverFlow = document.body.style.overflow;
-        const dialog = document.createElement("div");
+        const bodyOverFlow: string = document.body.style.overflow;
+        const dialog: HTMLDivElement = document.createElement("div");
         dialog.className = Dialog.control + " ya-share-box";
 
-        const toast = document.createElement("div");
+        const toast: HTMLDivElement = document.createElement("div");
         toast.className = "ya-dialog-toast";
         toast.id = "ya-dialog-toast";
         toast.innerHTML =
@@ -61,8 +61,8 @@ export default class Dialog {
         )[0] as HTMLDivElement;
         if (contain != null && option.contain != null) {
             contain.innerHTML = option.contain.value;
-            if (option.title.style != null) {
-                Dialog._setStyle("contain", contain, option.contain.style);
+            if (option.title && option.title.style != null) {
+                Dialog._setStyle("contain", contain, option.contain.style as yaDialogStyle);
             }
         }
 
@@ -70,7 +70,7 @@ export default class Dialog {
             "toastfoot"
         )[0] as HTMLDivElement;
         if (foot != null) {
-            let btns = foot.getElementsByTagName("button");
+            let btns: HTMLCollectionOf<HTMLButtonElement> = foot.getElementsByTagName("button");
             if (!(option.addBtn != null && option.addBtn)) foot.innerHTML = "";
             if (option.foot != null) {
                 if (option.foot.style != null)
@@ -94,7 +94,7 @@ export default class Dialog {
                                         footEle.id =
                                             "toastFoot" + btnList.length;
                                     }
-                                    btnOption.id = item.id;
+                                    btnOption.id = item.id as string;
                                     if (item.class != null)
                                         footEle.className = item.class;
                                     if (item.value != null)
@@ -125,11 +125,13 @@ export default class Dialog {
                 }
             }
 
-            let btnok: HTMLButtonElement;
-            for (let i = 0; i < btns.length; i++) {
-                const btnsE = btns[i] as HTMLButtonElement;
-                if (btnsE.id == "ya-dialog-toast-ok") {
-                    btnok = btnsE;
+            let btnok: HTMLButtonElement | null = null;
+            for (const key in btns) {
+                if (Object.prototype.hasOwnProperty.call(btns, key)) {
+                    const btnsE: HTMLButtonElement = btns[key] as HTMLButtonElement;
+                    if (btnsE.id == "ya-dialog-toast-ok") {
+                        btnok = btnsE;
+                    }
                 }
             }
             if (btnok) {
@@ -152,11 +154,13 @@ export default class Dialog {
                 if (isShow) btnList.push(btnOption);
             }
 
-            let btnC: HTMLButtonElement;
-            for (let i = 0; i < btns.length; i++) {
-                const btnsE = btns[i] as HTMLButtonElement;
-                if (btnsE.id == "ya-dialog-toast-cancel") {
-                    btnC = btnsE;
+            let btnC: HTMLButtonElement | null = null;
+            for (const key in btns) {
+                if (Object.prototype.hasOwnProperty.call(btns, key)) {
+                    const btnsE: HTMLButtonElement = btns[key] as HTMLButtonElement;
+                    if (btnsE.id == "ya-dialog-toast-cancel") {
+                        btnC = btnsE;
+                    }
                 }
             }
             if (btnC && option.cancel != null) {
@@ -168,13 +172,16 @@ export default class Dialog {
                     btnC.innerText = option.cancel.value;
                 if (option.cancel.click != null)
                     btnOption.click = () => {
-                        option.cancel.click();
-                        if (
-                            option.cancel.isClose == null ||
-                            (option.cancel.isClose != null &&
-                                option.cancel.isClose)
-                        )
-                            Dialog.close(bodyOverFlow);
+                        if (option.cancel) {
+                            option.cancel.click();
+                            if (
+                                option.cancel.isClose == null ||
+                                (option.cancel.isClose != null &&
+                                    option.cancel.isClose)
+                            ) {
+                                Dialog.close(bodyOverFlow);
+                            }
+                        }
                     };
                 if (option.cancel.show != null && !option.cancel.show) {
                     btnC.style.display = "none";
@@ -218,8 +225,10 @@ export default class Dialog {
             }
             if (item.click != null)
                 btn.addEventListener("click", (e) => {
-                    item.click();
-                    e.stopPropagation();
+                    if (item.click != null) {
+                        item.click();
+                        e.stopPropagation();
+                    }
                 });
             if (!btnEqualWidth) {
                 btn.style.width = "auto";
@@ -233,7 +242,7 @@ export default class Dialog {
             }
         });
 
-        const tFoot = document.getElementById("ya-dialog-toast-foot");
+        const tFoot: HTMLDivElement = document.getElementById("ya-dialog-toast-foot") as HTMLDivElement;
 
         if (footBtnAllWidth + 16 < tFoot.offsetWidth) {
             tFoot.style.borderTop = "none";
@@ -248,7 +257,7 @@ export default class Dialog {
             });
         }
 
-        const tMain = document.getElementById("ya-dialog-toast");
+        const tMain = document.getElementById("ya-dialog-toast") as HTMLDivElement;
         if (btnEqualHeight) tFoot.style.height = footBtnMaxHeight + "px";
         tMain.addEventListener("click", (e) => {
             e.stopPropagation();

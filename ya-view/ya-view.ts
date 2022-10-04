@@ -31,6 +31,9 @@ export default class YaView extends HTMLElement {
         }
     }
 
+    /**
+     * 影響 AppBar 的高度
+     */
     resizeAppBar() {
         if (this.className.indexOf("ya-view-article") >= 0) {
             const appBars: HTMLCollectionOf<Element> =

@@ -7,7 +7,7 @@ export interface YaMenuDelegate {
 
 export default class YaMenu extends HTMLElement {
     static control = "ya-menu";
-    bg: HTMLSpanElement;
+    bg: HTMLSpanElement = document.createElement("span");
     delegate: YaMenuDelegate | null = null;
     compensate: number[] = [0, 0, 0, 0]; //XYWH
 
@@ -29,7 +29,6 @@ export default class YaMenu extends HTMLElement {
             return;
         }
         this.className = YaMenu.control + " ya-share-box " + this.className;
-        this.bg = document.createElement("span");
         this.bg.className = "ya-share-box-bg";
         this.insertBefore(this.bg, this.firstChild);
         const items: HTMLCollectionOf<Element> =
@@ -132,11 +131,11 @@ export default class YaMenu extends HTMLElement {
         if (thisMenu.getAttribute("ya-open") == "1") {
             return;
         }
-        const toSize: string = thisMenu.getAttribute("ya-size");
-        if (!toSize || toSize.length == 0) {
+        const toSize: string = thisMenu.getAttribute("ya-size") ?? "";
+        if (toSize.length == 0) {
             return;
         }
-        const sizeStr: string[] = thisMenu.getAttribute("ya-size").split(",");
+        const sizeStr: string[] = (thisMenu.getAttribute("ya-size") ?? "").split(",");
         let thisSize: number[] = [
             parseInt(sizeStr[0]), // 0W
             parseInt(sizeStr[1]), // 1H

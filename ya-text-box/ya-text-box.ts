@@ -8,7 +8,7 @@ export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
     errBoxs: HTMLDivElement[] = [];
     input: HTMLInputElement;
     menus: YaMenu[] = [];
-    placeholder: HTMLSpanElement;
+    placeholder: HTMLSpanElement = document.createElement("span");
     placeholderLock: boolean = false;
     isSystemDialog: boolean = false;
 
@@ -265,7 +265,6 @@ export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
     initPlaceholderText() {
         const placeholderText: string = this.getAttribute("placeholder") ?? "";
         if (placeholderText.length > 0) {
-            this.placeholder = document.createElement("span");
             this.placeholder.className = YaTextBox.control + "-placeholder";
             this.placeholder.innerText = placeholderText;
             this.appendChild(this.placeholder);
