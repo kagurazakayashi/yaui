@@ -33,14 +33,14 @@ export default class Main {
         YAUI.loadF(YaSnackbar);
         YAUI.loadF(YaDialog);
         // 點選圖示按鈕，開啟一個選單
-        const btnMainMenu = document.getElementById("btnMainMenu");
+        const btnMainMenu: YaIconButton = document.getElementById("btnMainMenu") as YaIconButton;
         btnMainMenu.addEventListener("click", () => {
-            YaMenu.open(document.getElementById("mainMenu"));
+            YaMenu.open(document.getElementById("mainMenu") as YaMenu);
         });
-        const btnAccountMenu = document.getElementById("btnAccountMenu");
+        const btnAccountMenu: YaIconButton = document.getElementById("btnAccountMenu") as YaIconButton;
         btnAccountMenu.addEventListener("click", () => {
-            const accountMenu: HTMLElement =
-                document.getElementById("accountMenu");
+            const accountMenu: YaMenu =
+                document.getElementById("accountMenu") as YaMenu;
             const appBar: HTMLElement = document.body.getElementsByTagName(
                 "ya-top-app-bar"
             )[0] as HTMLElement;
@@ -49,12 +49,12 @@ export default class Main {
             YaMenu.open(accountMenu);
         });
         // YaSnackbar
-        const submit = document.getElementById("submit");
+        const submit: YaButton = document.getElementById("submit") as YaButton;
         submit.addEventListener("click", () => {
             YaSnackbar.show("请继续操作。", "提交成功", "info#gray");
         });
         // YaDialog
-        const showdialog = document.getElementById("showdialog");
+        const showdialog: YaButton = document.getElementById("showdialog") as YaButton;
         showdialog.addEventListener("click", () => {
             const btnTest = document.createElement("button");
             btnTest.id = "bt";
@@ -98,9 +98,9 @@ export default class Main {
                             {
                                 element: btnTest,
                                 click: () => {
-                                    document.getElementById(
+                                    (document.getElementById(
                                         "ya-dialog-toast-contain"
-                                    ).innerHTML = "";
+                                    ) as HTMLElement).innerHTML = "";
                                 },
                                 // isClose: true,
                             },
@@ -110,9 +110,9 @@ export default class Main {
                                 class: "btnC",
                                 value: "add Button Test",
                                 click: () => {
-                                    document.getElementById(
+                                    (document.getElementById(
                                         "ya-dialog-toast-contain"
-                                    ).innerHTML += "aa<br/>";
+                                    ) as HTMLElement).innerHTML += "aa<br/>";
                                 },
                                 style: {
                                     minWidth: "150px",
