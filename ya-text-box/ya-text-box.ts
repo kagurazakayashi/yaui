@@ -246,7 +246,7 @@ export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
         }
         this.placeholderMode(false, this.placeholder);
         let text: string = this.placeholder.innerText;
-        for (let i = 0; i < text.length; i++) {
+        for (const _ of text) {
             if (text.charAt(text.length - 1) == ":") {
                 text = text.substring(0, text.length - 1);
             } else {
@@ -275,38 +275,49 @@ export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
                 this.blur();
             });
             this.input.addEventListener("input", () => {
-                const val: string = this.input.value;
-                let brk: number = 0;
-                for (let i = 0; i < this.modes.length; i++) {
-                    const errBox: HTMLDivElement = this.errBoxs[i];
-                    if (brk > 0) {
-                        errBox.style.display = "none";
-                        continue;
-                    }
-                    const mode: string = this.modes[i];
-                    const reg = new RegExp(mode);
-                    if (reg.test(val)) {
-                        errBox.style.display = "none";
-                    } else {
-                        errBox.style.display = "block";
-                        this.setAttribute("ya-err", errBox.innerText);
-                        brk++;
-                    }
-                }
-                if (brk > 0) {
-                    this.style.borderColor = "#F00";
-                } else {
-                    this.style.borderColor = "gray";
-                    this.removeAttribute("ya-err");
-                }
+                this.chkRule();
             });
         }
     }
 
     /**
-     * 檢查表單是否可以提交
+     * 檢查規則
+     * @return {string[]} 錯誤資訊列表
+     */
+    chkRule(): string[] {
+        const val: string = this.input.value;
+        let brk: number = 0;
+        const errors: string[] = [];
+        for (let i = 0; i < this.modes.length; i++) {
+            const errBox: HTMLDivElement = this.errBoxs[i];
+            if (brk > 0) {
+                errBox.style.display = "none";
+                continue;
+            }
+            const mode: string = this.modes[i];
+            const reg = new RegExp(mode);
+            if (reg.test(val)) {
+                errBox.style.display = "none";
+            } else {
+                errBox.style.display = "block";
+                errors.push(errBox.innerText);
+                this.setAttribute("ya-err", errBox.innerText);
+                brk++;
+            }
+        }
+        if (brk > 0) {
+            this.style.borderColor = "#F00";
+        } else {
+            this.style.borderColor = "gray";
+            this.removeAttribute("ya-err");
+        }
+        return errors;
+    }
+
+    /**
+     * 外部批次檢查規則
      * @param {HTMLElement} form 包括 ya-text-box 的父元素
-     * @return {string} 錯誤資訊列表
+     * @return {string[]} 錯誤資訊列表
      */
     static chkRules(form: HTMLElement): string[] {
         const textboxes: HTMLCollectionOf<Element> =
@@ -314,7 +325,8 @@ export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
         const errors: string[] = [];
         for (const key in textboxes) {
             if (Object.prototype.hasOwnProperty.call(textboxes, key)) {
-                const textbox: HTMLElement = textboxes[key] as HTMLElement;
+                const textbox: YaTextBox = textboxes[key] as YaTextBox;
+                textbox.chkRule();
                 const err: string = textbox.getAttribute("ya-err") ?? "";
                 errors.push(err);
             }
