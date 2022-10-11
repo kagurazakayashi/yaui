@@ -57,11 +57,23 @@
     background-color: gray;
 }
 
-/* @media only screen and (max-width: 740px) {
-    .ya-dialog-login-sidebar {
-        display: none;
-    }
-    .ya-dialog-login-content {
-        left: 0;
-    }
-} */
+@media only screen and (max-width: 740px) {
+  .ya-dialog-login-sidebar {
+    display: none;
+  }
+  .ya-dialog-login-content {
+    left: -20px;
+  }
+  .ya-dialog-login-content {
+    width: 100%;
+  }
+  .ya-dialog-login {
+    width: 504px;
+  }
+}
+
+@media only screen and (max-width: 544px) {
+  .ya-dialog-login {
+    width: calc(100% - 40px);
+  }
+}
