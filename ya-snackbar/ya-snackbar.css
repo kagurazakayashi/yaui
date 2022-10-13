@@ -62,12 +62,17 @@
 }
 
 .ya-snackbar-icon {
-    position: relative;
-    float: left;
+    position: absolute;
+    left: 10px;
+    top: 10px;
     font-size: 40px;
     padding-right: 10px;
 }
 
 .ya-snackbar-icontop {
     padding-top: 10px;
+}
+
+.ya-snackbar-icon-pad {
+    padding-left: 40px;
 }

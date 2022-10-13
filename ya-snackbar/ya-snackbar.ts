@@ -57,7 +57,9 @@ export default class YaSnackbar {
         const bg: HTMLSpanElement = document.createElement("span");
         bg.className = "ya-share-box-bg";
         snackbar.appendChild(bg);
+        let iconPad = "";
         if (icon.length > 0) {
+            iconPad = " " + YaSnackbar.control + "-icon-pad";
             const iconInfo: string[] = icon.split("#");
             const iconType: string = iconInfo[0];
             const iconColor: string = iconInfo[1] ?? "";
@@ -83,12 +85,13 @@ export default class YaSnackbar {
         }
         if (title.length > 0) {
             const titleBox = document.createElement("div");
-            titleBox.className = YaSnackbar.control + "-title";
+            titleBox.className = YaSnackbar.control + "-title" + iconPad;
             titleBox.innerText = title;
             snackbar.appendChild(titleBox);
         }
         const textBox: HTMLDivElement = document.createElement("div");
         textBox.innerText = text;
+        textBox.className = YaSnackbar.control + "-text" + iconPad;
         if (icon.length > 0 && title.length == 0) {
             textBox.className += YaSnackbar.control + "-icontop";
         }
@@ -96,8 +99,6 @@ export default class YaSnackbar {
         snackbox.appendChild(snackbar);
         const owidth = snackbar.offsetWidth;
         const oheight = snackbar.offsetHeight;
-        // alignW
-        // TODO: !!!!!!!!!!!!!!!!!!!!!!!!!!!
         let startTransform: string;
         let closeTransform: string;
         const move: number[] = new Array<number>(2);
