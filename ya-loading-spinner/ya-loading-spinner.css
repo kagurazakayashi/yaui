@@ -1,0 +1,41 @@
+.ya-loading-spinner {
+  position: absolute;
+}
+
+.ya-loading-spinner-1 {
+  display: flex;
+  justify-content: center;
+}
+
+.ya-loading-spinner-1-fb {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  content: "";
+  border-width: 5px;
+  border-style: solid;
+  border-radius: 50%;
+  animation-name: ya-loading-spinner-1a;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.ya-loading-spinner-1-b {
+  animation-duration: 2s;
+}
+
+.ya-loading-spinner-1-f {
+  border-color: transparent;
+  animation-duration: 1s;
+}
+
+@keyframes ya-loading-spinner-1a {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(1turn);
+  }
+}
