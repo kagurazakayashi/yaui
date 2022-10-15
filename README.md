@@ -9,15 +9,20 @@
 - [x] 顶部标题栏 `ya-top-app-bar`
 - [x] 图标按钮   `ya-icon-button`
   - [x] 和菜单内图标的兼容性
+- [x] 等待动画圆圈 `ya-loading-spinner`
+- [x] 按钮 `ya-button`
+  - [x] 不可用状态
+    - [x] 带有 `ya-loading-spinner` 的等待状态
 - [x] 弹出式菜单 `ya-menu`
   - [x] 处理屏幕底端溢出的情况
 - [x] 可滚动区域 `ya-scroll-view`
   - [ ] 跟随滚动自动隐藏顶部标题栏
 - [x] 内容面板   `ya-view`
   - [x] 正文面板
-- [ ] 对话框
+- [x] 对话框
   - [x] 登录对话框 `ya-dialog-login`
-  - [ ] 可定制对话框 `ya-dialog`
+    - [x] 响应式布局
+  - [x] 可定制对话框 `ya-dialog`
 - [x] 文本框 `ya-text-box`
   - [x] 一般文本框
   - [x] 带标题（动画）文本框
@@ -28,6 +33,7 @@
   - [x] 进出动画
   - [x] 同时显示多个
   - [x] 支持四角显示
+
 
 # 分支
 
