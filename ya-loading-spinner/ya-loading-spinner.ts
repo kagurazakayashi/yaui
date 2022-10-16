@@ -5,9 +5,9 @@ export default class YaLoadingSpinner {
   static control = "ya-loading-spinner";
 
   /**
-     * 加载所需的样式等其他文件
-     * 該函式由 YAUI 類呼叫，無需手工執行
-     */
+   * 加载所需的样式等其他文件
+   * 該函式由 YAUI 類呼叫，無需手工執行
+   */
   static loadFile() {
     require(`./${YaLoadingSpinner.control}.css`);
   }
@@ -18,7 +18,13 @@ export default class YaLoadingSpinner {
    * @param {number} styleID 样式 ID
    * @return {HTMLDivElement} 載入圓圈 diV
    */
-  static gen(styleID: number = 1, size: number = 20, borderSize: number = 5, backgroundColor: string = "#CCC", foregroundColor: string = "#1daae2"): HTMLDivElement {
+  static gen(
+    styleID: number = 1,
+    size: number = 20,
+    borderSize: number = 5,
+    backgroundColor: string = "#CCC",
+    foregroundColor: string = "#1daae2"
+  ): HTMLDivElement {
     const fullSize: number = size + borderSize * 2;
     const leftTop: string = `calc(50% - ${fullSize / 2}px)`;
     const sizePx: string = `${size}px`;

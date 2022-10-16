@@ -1,78 +1,78 @@
 .ya-snackbar-box {
-    position: fixed;
-    display: block;
-    padding-top: 20px;
-    width: 300px;
-    max-height: calc(100% - 20px);
-    z-index: 200;
-    overflow: hidden;
+  position: fixed;
+  display: block;
+  padding-top: 20px;
+  width: 300px;
+  max-height: calc(100% - 20px);
+  z-index: 200;
+  overflow: hidden;
 }
 
 .ya-snackbar-box-t {
-    top: -10px;
-    max-height: calc(100% + 20px);
+  top: -10px;
+  max-height: calc(100% + 20px);
 }
 
 .ya-snackbar-box-b {
-    bottom: 0;
+  bottom: 0;
 }
 
 .ya-snackbar-box-l {
-    left: 0;
+  left: 0;
 }
 
 .ya-snackbar-box-r {
-    right: 0;
+  right: 0;
 }
 
 .ya-snackbar-box-c {
-    padding-top: 0px;
-    left: calc(50% - 150px);
-    text-align: center;
-    width: 320px;
-    background-color: pink;
+  padding-top: 0px;
+  left: calc(50% - 150px);
+  text-align: center;
+  width: 320px;
+  background-color: pink;
 }
 
 .ya-snackbar {
-    position: relative;
-    display: block;
-    width: calc(100% - 60px);
-    padding: 20px;
-    margin-bottom: 20px;
-    transition-property: transform;
-    transition-timing-function: linear;
-    cursor: pointer;
+  position: relative;
+  display: block;
+  width: calc(100% - 60px);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition-property: transform;
+  transition-timing-function: linear;
+  cursor: pointer;
 }
 
 .ya-snackbar-c {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .ya-snackbar:hover {
-    background-color: #ffffff66;
+  background-color: #ffffff66;
 }
 
 .ya-snackbar .ya-share-box-bg {
-    background-color: #ffffff99;
+  background-color: #ffffff99;
 }
 
 .ya-snackbar-title {
-    font-weight: bold;
-    padding-bottom: 5px;
+  font-weight: bold;
+  padding-bottom: 5px;
 }
 
 .ya-snackbar-icon {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    font-size: 40px;
-    padding-right: 10px;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  font-size: 40px;
+  padding-right: 10px;
 }
 
 .ya-snackbar-icontop {
-    padding-top: 10px;
+  padding-top: 10px;
 }
 
 .ya-snackbar-icon-pad {
-    padding-left: 40px;
+  padding-left: 40px;
 }

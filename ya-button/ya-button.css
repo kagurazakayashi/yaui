@@ -1,25 +1,25 @@
 .ya-button {
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
-    user-select: none;
-    cursor: pointer;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    text-align: center;
-    vertical-align: middle;
-    flex-direction: column;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  user-select: none;
+  cursor: pointer;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  vertical-align: middle;
+  flex-direction: column;
 }
 
 .ya-button .material-icons-outlined {
-    vertical-align: -6px;
+  vertical-align: -6px;
 }
 
 .ya-button .mico {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    line-height: 0;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  line-height: 0;
 }

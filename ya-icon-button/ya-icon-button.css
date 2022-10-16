@@ -1,16 +1,16 @@
 .ya-icon-button {
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
-    user-select: none;
-    cursor: pointer;
-    margin: 5px;
-    text-align: left;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  user-select: none;
+  cursor: pointer;
+  margin: 5px;
+  text-align: left;
 }
 
 .ya-icon-button .mico {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    line-height: 0;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  line-height: 0;
 }

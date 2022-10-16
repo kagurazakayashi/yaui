@@ -1,60 +1,60 @@
 .ya-switch {
-    position: relative;
-    display: inline-block;
-    padding: 0;
-    box-sizing: border-box;
-    cursor: pointer;
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: pointer;
 }
 
 .ya-switch:hover {
-    color: blue;
-    text-decoration: underline;
+  color: blue;
+  text-decoration: underline;
 }
 
 .ya-switch-label {
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 20px;
-    margin: 10px;
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  margin: 10px;
 }
 
 .ya-switch-input {
-    position: relative;
-    z-index: 1;
-    appearance: none;
+  position: relative;
+  z-index: 1;
+  appearance: none;
 }
 
 .ya-switch-span {
-    position: absolute;
-    display: block;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: lightgray;
-    border-radius: 20px;
-    transition: 0.5s;
-    border: 2px solid lightgray;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: lightgray;
+  border-radius: 20px;
+  transition: 0.5s;
+  border: 2px solid lightgray;
 }
 
 .ya-switch-input:checked ~ .ya-switch-span {
-    background-color: limegreen;
-    border-color: limegreen;
+  background-color: limegreen;
+  border-color: limegreen;
 }
 
 .ya-switch-i {
-    position: absolute;
-    display: block;
-    width: 50%;
-    height: 100%;
-    background-color: #fff;
-    border-radius: 50%;
-    top: 0px;
-    left: 0px;
-    transition: 0.5s;
+  position: absolute;
+  display: block;
+  width: 50%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 50%;
+  top: 0px;
+  left: 0px;
+  transition: 0.5s;
 }
 
 .ya-switch-input:checked ~ .ya-switch-span .ya-switch-i {
-    left: 50%;
+  left: 50%;
 }

@@ -1,13 +1,13 @@
 .ya-view {
-    display: block;
+  display: block;
 }
 
 .ya-view-article {
-    position: relative;
-    padding: 10px 20px 10px 20px;
-    width: calc(100% - 60px);
-    margin: 10px;
-    margin-top: 80px;
+  position: relative;
+  padding: 10px 20px 10px 20px;
+  width: calc(100% - 60px);
+  margin: 10px;
+  margin-top: 80px;
 }
 
 /* ::-webkit-scrollbar {
