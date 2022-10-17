@@ -33,7 +33,7 @@ export default class YaMenu extends HTMLElement {
     this.insertBefore(this.bg, this.firstChild);
     const items: HTMLCollectionOf<Element> =
       this.getElementsByTagName("ya-menu-item");
-    let num: number = 0;
+    let num = 0;
     for (const key in items) {
       if (Object.prototype.hasOwnProperty.call(items, key)) {
         const item: HTMLElement = items[key] as HTMLElement;
@@ -136,7 +136,7 @@ export default class YaMenu extends HTMLElement {
     const sizeStr: string[] = (thisMenu.getAttribute("ya-size") ?? "").split(
       ","
     );
-    let thisSize: number[] = [
+    const thisSize: number[] = [
       parseInt(sizeStr[0]), // 0W
       parseInt(sizeStr[1]), // 1H
       parseInt(sizeStr[2]), // 2X

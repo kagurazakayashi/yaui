@@ -33,7 +33,7 @@ export default class YaButton extends HTMLElement {
    * @param {boolean} enable 啟用或禁用
    * @param {boolean} loading 是否显示或隐藏等待动画
    */
-  setEnable(enable: boolean, loading: boolean = false) {
+  setEnable(enable: boolean, loading = false) {
     this.style.pointerEvents = enable ? "auto" : "none";
     if (loading) {
       if (enable) {

@@ -19,16 +19,16 @@ export default class YaLoadingSpinner {
    * @return {HTMLDivElement} 載入圓圈 diV
    */
   static gen(
-    styleID: number = 1,
-    size: number = 20,
-    borderSize: number = 5,
-    backgroundColor: string = "#CCC",
-    foregroundColor: string = "#1daae2"
+    styleID = 1,
+    size = 20,
+    borderSize = 5,
+    backgroundColor = "#CCC",
+    foregroundColor = "#1daae2"
   ): HTMLDivElement {
     const fullSize: number = size + borderSize * 2;
-    const leftTop: string = `calc(50% - ${fullSize / 2}px)`;
-    const sizePx: string = `${size}px`;
-    const fullSizePx: string = `${fullSize}px`;
+    const leftTop = `calc(50% - ${fullSize / 2}px)`;
+    const sizePx = `${size}px`;
+    const fullSizePx = `${fullSize}px`;
     const loadingIcon: HTMLDivElement = document.createElement("div");
     loadingIcon.className = `${YaLoadingSpinner.control} ${YaLoadingSpinner.control}-${styleID}`;
     loadingIcon.style.width = fullSizePx;

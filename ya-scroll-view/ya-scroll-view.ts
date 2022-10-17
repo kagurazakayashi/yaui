@@ -3,9 +3,9 @@
  */
 export default class YaScrollView extends HTMLElement {
   static control = "ya-scroll-view";
-  scrollOldTop: number = 0;
-  scrollOldMode: boolean = false; // F↑ T↓
-  scrollModeI: number = 0;
+  scrollOldTop = 0;
+  scrollOldMode = false; // F↑ T↓
+  scrollModeI = 0;
   appBars: HTMLElement[] = [];
 
   /**

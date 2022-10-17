@@ -6,7 +6,7 @@ export default class YaTopAppBar extends HTMLElement {
   // scrollOldTop: number = 0;
   // scrollOldMode: boolean = false; // F↑ T↓
   // scrollModeI: number = 0;
-  touchOldTop: number = 0;
+  touchOldTop = 0;
 
   /**
    * 加载所需的样式等其他文件
@@ -104,11 +104,11 @@ export default class YaTopAppBar extends HTMLElement {
    */
   appBarShow(isShow: boolean) {
     let i = 0;
-    let modes: string[] = ["show", "hide"];
+    const modes: string[] = ["show", "hide"];
     for (; i < modes.length; i++) {
       modes[i] = YaTopAppBar.control + "-" + modes[i];
     }
-    let classNameList: string[] = this.className.split(" ");
+    const classNameList: string[] = this.className.split(" ");
     for (i = 0; i < classNameList.length; i++) {
       for (const mode of modes) {
         if (mode == classNameList[i]) {

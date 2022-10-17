@@ -9,8 +9,8 @@ export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
   input: HTMLInputElement;
   menus: YaMenu[] = [];
   placeholder: HTMLSpanElement = document.createElement("span");
-  placeholderLock: boolean = false;
-  isSystemDialog: boolean = false;
+  placeholderLock = false;
+  isSystemDialog = false;
 
   /**
    * 加载所需的样式等其他文件
@@ -65,15 +65,15 @@ export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
    * @return {string} 能夠識別的時間
    */
   static inputDateTime(
-    year: number = -1,
-    month: number = -1,
-    day: number = -1,
-    hour: number = -1,
-    minute: number = -1,
-    second: number = -1
+    year = -1,
+    month = -1,
+    day = -1,
+    hour = -1,
+    minute = -1,
+    second = -1
   ): string {
     // "yyyy-MM-ddThh:mm"
-    let str: string = "";
+    let str = "";
     if (year > -1) {
       str += year.toString().padStart(4, "0");
     }
@@ -283,7 +283,7 @@ export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
    */
   chkRule(): string[] {
     const val: string = this.input.value;
-    let brk: number = 0;
+    let brk = 0;
     const errors: string[] = [];
     for (let i = 0; i < this.modes.length; i++) {
       const errBox: HTMLDivElement = this.errBoxs[i];

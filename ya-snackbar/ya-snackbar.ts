@@ -27,17 +27,17 @@ export default class YaSnackbar {
    */
   static show(
     text: string,
-    title: string = "",
-    icon: string = "info",
-    position: string = "rt",
-    duration: number = 3000,
-    width: number = 300,
-    speed: number = 300
+    title = "",
+    icon = "info",
+    position = "rt",
+    duration = 3000,
+    width = 300,
+    speed = 300
   ) {
     position = position.toLowerCase();
     const alignW: string = "lcr".indexOf(position[0]) >= 0 ? position[0] : "r";
     const alignH: string = "tb".indexOf(position[1]) >= 0 ? position[1] : "t";
-    const className: string = `${YaSnackbar.control}-box-${alignW} ${YaSnackbar.control}-box-${alignH}`;
+    const className = `${YaSnackbar.control}-box-${alignW} ${YaSnackbar.control}-box-${alignH}`;
     const snackboxs: HTMLCollectionOf<Element> =
       document.getElementsByClassName(className);
     let snackbox: HTMLDivElement;
@@ -100,7 +100,7 @@ export default class YaSnackbar {
     let startTransform: string;
     let closeTransform: string;
     const move: number[] = new Array<number>(2);
-    const translate: string = "translate";
+    const translate = "translate";
     if (alignW == "c") {
       switch (alignH) {
         case "t":

@@ -41,7 +41,7 @@ export default class Dialog {
     dialog.appendChild(toast);
     dialog.innerHTML += "<div style='flex-grow: 1'></div>";
 
-    let btnList: yaDialogButtonListOption[] = [];
+    const btnList: yaDialogButtonListOption[] = [];
     // let isShow = true;
 
     // let btnOption = {} as yaDialogButtonListOption;
@@ -72,7 +72,7 @@ export default class Dialog {
       "toastfoot"
     )[0] as HTMLDivElement;
     if (foot != null) {
-      let btns: HTMLCollectionOf<HTMLButtonElement> =
+      const btns: HTMLCollectionOf<HTMLButtonElement> =
         foot.getElementsByTagName("button");
       if (!(option.addBtn != null && option.addBtn)) foot.innerHTML = "";
       if (option.foot != null) {
