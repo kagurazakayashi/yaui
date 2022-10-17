@@ -51,7 +51,15 @@ export default class Main {
         // YaSnackbar
         const submit: YaButton = document.getElementById("submit") as YaButton;
         submit.addEventListener("click", () => {
-            YaSnackbar.show("请继续操作。", "提交成功", "info#gray");
+            if (this.chkLoginInfo()) {
+                // NyaNetwork.post(this.apiHost, {
+                // }, (data: XMLHttpRequest | null, status: number) => {
+                // });
+              } else {
+                setTimeout(() => {
+                    submit.setEnable(true, true);
+                }, 1000);
+              }
         });
         // YaDialog
         const showdialog: YaButton = document.getElementById("showdialog") as YaButton;
@@ -135,6 +143,16 @@ export default class Main {
                 false
             );
         });
+    }
+
+    chkLoginInfo(): boolean {
+        const loginTB:HTMLTableElement = document.getElementById("loginTB") as HTMLTableElement;
+        const errs: string[] = YaTextBox.chkRules(loginTB);
+        if (errs.length > 0) {
+          YaSnackbar.show(errs.join('\n'), "输入不正确", "cancel");
+          return false;
+        }
+        return true;
     }
 }
 
