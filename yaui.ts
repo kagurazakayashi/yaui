@@ -8,7 +8,7 @@ export default class YaShare {
    */
   static init() {
     window.yaLoaded = [];
-    require(`./yaui.css`);
+    require("./yaui.css");
     require("material-icons");
   }
 

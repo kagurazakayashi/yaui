@@ -325,7 +325,9 @@ export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
         const textbox: YaTextBox = textboxes[key] as YaTextBox;
         textbox.chkRule();
         const err: string = textbox.getAttribute("ya-err") ?? "";
-        errors.push(err);
+        if (err.length > 0) {
+          errors.push(err);
+        }
       }
     }
     return errors;
