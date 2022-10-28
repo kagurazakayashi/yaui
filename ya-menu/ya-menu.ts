@@ -64,7 +64,7 @@ export default class YaMenu extends HTMLElement {
           thisSize[0] -
           (item.className.indexOf("ya-menu-item-no-icon") >= 0 ? 30 : 0) +
           "px";
-        item.addEventListener("click", (e) => {
+        item.addEventListener("click", () => {
           this.delegate?.yaClickMenuItem(this, item, i);
         });
       }
@@ -81,7 +81,7 @@ export default class YaMenu extends HTMLElement {
    * document.body.addEventListener("click", closeEvent);
    * @param {MouseEvent} ev 點選事件
    */
-  closeEvent = (ev: MouseEvent) => {
+  closeEvent = () => {
     // const clickX: number = ev.clientX;
     // const clickY: number = ev.clientY;
     // const divRect: DOMRect = this.getBoundingClientRect();

@@ -36,7 +36,7 @@ export default class Dialog {
     toast.className = "ya-dialog-toast";
     toast.id = "ya-dialog-toast";
     toast.innerHTML =
-      '<div id="ya-dialog-toast-title" class="title"></div><div id="ya-dialog-toast-contain" class="contain"></div><div id="ya-dialog-toast-foot" class="toastfoot"><button id="ya-dialog-toast-ok"></button><button id="ya-dialog-toast-cancel"></button></div>';
+      "<div id=\"ya-dialog-toast-title\" class=\"title\"></div><div id=\"ya-dialog-toast-contain\" class=\"contain\"></div><div id=\"ya-dialog-toast-foot\" class=\"toastfoot\"><button id=\"ya-dialog-toast-ok\"></button><button id=\"ya-dialog-toast-cancel\"></button></div>";
     dialog.innerHTML = "<div style='flex-grow: 1'></div>";
     dialog.appendChild(toast);
     dialog.innerHTML += "<div style='flex-grow: 1'></div>";
@@ -188,7 +188,7 @@ export default class Dialog {
           "ya-dialog-toast"
         )[0] as HTMLDivElement;
         Dialog._setStyle(
-          'document.getElementById("ya-dialog-toast")',
+          "document.getElementById(\"ya-dialog-toast\")",
           toast,
           option.style
         );

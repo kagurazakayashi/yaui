@@ -46,7 +46,7 @@ export default class YaSwitch extends HTMLElement {
     label.style.height = height + "px";
     span.style.borderRadius = height + "px";
     this.insertBefore(label, this.firstChild);
-    this.addEventListener("click", (e) => {
+    this.addEventListener("click", () => {
       input.checked = !input.checked;
       this.setAttribute("value", input.checked ? "1" : "0");
     });

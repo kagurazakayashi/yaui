@@ -30,7 +30,6 @@ export default class YaImageCSS extends HTMLElement {
     }
     const image = new Image();
     image.src = src;
-    console.log(this);
     image.onload = () => {
       const scale: number = image.width / image.height;
       if (

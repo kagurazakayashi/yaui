@@ -152,7 +152,7 @@ export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
    * @param {HTMLElement} item 所觸發的選單項
    * @param {index} index 觸發的第幾個選單項
    */
-  yaClickMenuItem(menu: YaMenu, item: HTMLElement, index: number) {
+  yaClickMenuItem(menu: YaMenu, item: HTMLElement) {
     for (const nmenu of this.menus) {
       if (menu.id == nmenu.id) {
         this.input.value = item.innerText;
@@ -243,12 +243,10 @@ export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
     }
     this.placeholderMode(false, this.placeholder);
     let text: string = this.placeholder.innerText;
-    for (const _ of text) {
-      if (text.charAt(text.length - 1) == ":") {
-        text = text.substring(0, text.length - 1);
-      } else {
-        this.placeholder.innerText = text;
-      }
+    if (text.charAt(text.length - 1) == ":") {
+      text = text.substring(0, text.length - 1);
+    } else {
+      this.placeholder.innerText = text;
     }
     setTimeout(() => {
       this.placeholder.style.transition = "";
