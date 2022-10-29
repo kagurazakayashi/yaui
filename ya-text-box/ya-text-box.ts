@@ -242,12 +242,12 @@ export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
       this.style.borderColor = "gray";
     }
     this.placeholderMode(false, this.placeholder);
-    let text: string = this.placeholder.innerText;
-    if (text.charAt(text.length - 1) == ":") {
-      text = text.substring(0, text.length - 1);
-    } else {
-      this.placeholder.innerText = text;
-    }
+    // const text: string = this.placeholder.innerText;
+    // if (text.charAt(text.length - 1) == ":") {
+    //   this.placeholder.innerText = text.substring(0, text.length - 1);
+    // } else {
+    //   this.placeholder.innerText = text;
+    // }
     setTimeout(() => {
       this.placeholder.style.transition = "";
       this.style.transition = "";
