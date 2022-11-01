@@ -1,137 +1,212 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0 user-scalable=yes"
+        />
+        <title>YAUI DEMO</title>
+    </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=yes" />
-  <title>YAUI DEMO</title>
-</head>
-
-<body>
-  <ya-top-app-bar class="ya-top-app-bar-auto-hide">
-    <span>
-      <ya-icon-button id="btnMainMenu">menu</ya-icon-button>
-    </span>
-    <span>
-      <h1>YAUI</h1>
-    </span>
-    <span class="right">
-      <ya-icon-button id="btnAccountMenu">account_circle</ya-icon-button>
-    </span>
-  </ya-top-app-bar>
-  <ya-menu id="mainMenu">
-    <ya-menu-item>
-      <span>
-        <ya-icon-button>home</ya-icon-button>
-      </span>
-      <span>首页</span>
-    </ya-menu-item>
-    <ya-menu-item>
-      <span>
-        <ya-icon-button>stars</ya-icon-button>
-      </span>
-      <span>图标按钮</span>
-    </ya-menu-item>
-    <ya-menu-item>
-      <span>
-        <ya-icon-button>open_in_browser</ya-icon-button>
-      </span>
-      <span>顶部栏</span>
-    </ya-menu-item>
-    <ya-menu-item>
-      <span>
-        <ya-icon-button>menu_open</ya-icon-button>
-      </span>
-      <span>菜单</span>
-    </ya-menu-item>
-  </ya-menu>
-  <ya-menu id="accountMenu">
-    <div class="accountMenuHead">
-      <ya-icon-button size="100">account_circle</ya-icon-button>
-      <div>游客帐户</div><br />
-    </div>
-    <ya-menu-item>
-      <span>
-        <ya-icon-button>manage_accounts</ya-icon-button>
-      </span>
-      <span>账户设置</span>
-    </ya-menu-item>
-    <ya-menu-item>
-      <span>
-        <ya-icon-button>settings</ya-icon-button>
-      </span>
-      <span>系统设置</span>
-    </ya-menu-item>
-    <ya-menu-item>
-      <span>
-        <ya-icon-button>logout</ya-icon-button>
-      </span>
-      <span>登出</span>
-    </ya-menu-item>
-  </ya-menu>
-  <ya-dialog-login class="ya-dialog-login-view">
-    <div class="ya-dialog-login-sidebar">
-      <ya-image-css id="logo" class="ya-dialog-login-logo" auto-size="0" alt="logo"></ya-image-css>
-    </div>
-    <div class="ya-dialog-login-content">
-      <h1><span class="ya-dialog-login-title-block"></span>用户登录</h1>
-      <table id="loginTB">
-        <tbody>
-          <tr>
-            <td><span class="material-icons-outlined">dns</span></td>
-            <td>
-              <ya-text-box class="ya-text-box-select" id="" value="server1" placeholder="服务器">
-                <ya-menu>
-                  <ya-menu-item value="server1">虚拟服务器1</ya-menu-item>
-                  <ya-menu-item value="server2">虚拟服务器2</ya-menu-item>
-                  <ya-menu-item value="server3">虚拟服务器3</ya-menu-item>
-                  <ya-menu-item value="server4">虚拟服务器4</ya-menu-item>
-                  <ya-menu-item value="server5">虚拟服务器5</ya-menu-item>
-                  <ya-menu-item value="server6">虚拟服务器6</ya-menu-item>
-                  <ya-menu-item value="server7">虚拟服务器7</ya-menu-item>
-                  <ya-menu-item value="server8">虚拟服务器8</ya-menu-item>
-                  <ya-menu-item value="server9">虚拟服务器9</ya-menu-item>
-                </ya-menu>
-                <div class="ya-text-box-rule" ya-mode="">必须指定一个服务器</div>
-              </ya-text-box>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="material-icons-outlined">person</span></td>
-            <td>
-              <ya-text-box value="demo" placeholder="用户名">
-                <div class="ya-text-box-rule">必须指定一个用户名</div>
-                <div class="ya-text-box-rule" ya-mode="^[a-zA-Z0-9\u4e00-\u9fa5_-]{3,32}$">用户名在3-32位之间，由字母/数字/汉字组成</div>
-              </ya-text-box>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="material-icons-outlined">lock</span></td>
-            <td>
-              <ya-text-box type="password" placeholder="密码">
-                <div class="ya-text-box-rule">必须指定一个密码</div>
-              </ya-text-box>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="material-icons-outlined">event</span></td>
-            <td>
-              <ya-text-box type="datetime-local" placeholder="登录过期时间">
-                <div class="ya-text-box-rule">必须指定一个时间</div>
-              </ya-text-box>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="btnbar">
-        <ya-switch size="40" id="saveSession" value="1">记住密码</ya-switch>
-        <ya-button id="submit"><span class="material-icons-outlined">person</span> 提交</ya-button>
-        <ya-button id="showdialog"><span class="material-icons-outlined">open_in_browser</span> 弹框</ya-button>
-      </div>
-    </div>
-  </ya-dialog-login>
-  <!-- <div class="fill"></div> -->
-  <!-- <ya-scroll-view class="ya-full">
+    <body>
+        <ya-top-app-bar class="ya-top-app-bar-auto-hide">
+            <span>
+                <ya-icon-button id="btnMainMenu">menu</ya-icon-button>
+            </span>
+            <span>
+                <h1>YAUI</h1>
+            </span>
+            <span class="right">
+                <ya-icon-button id="btnAccountMenu"
+                    >account_circle</ya-icon-button
+                >
+            </span>
+        </ya-top-app-bar>
+        <ya-menu id="mainMenu">
+            <ya-menu-item>
+                <span>
+                    <ya-icon-button>home</ya-icon-button>
+                </span>
+                <span>首页</span>
+            </ya-menu-item>
+            <ya-menu-item>
+                <span>
+                    <ya-icon-button>stars</ya-icon-button>
+                </span>
+                <span>图标按钮</span>
+            </ya-menu-item>
+            <ya-menu-item>
+                <span>
+                    <ya-icon-button>open_in_browser</ya-icon-button>
+                </span>
+                <span>顶部栏</span>
+            </ya-menu-item>
+            <ya-menu-item>
+                <span>
+                    <ya-icon-button>menu_open</ya-icon-button>
+                </span>
+                <span>菜单</span>
+            </ya-menu-item>
+        </ya-menu>
+        <ya-menu id="accountMenu">
+            <div class="accountMenuHead">
+                <ya-icon-button size="100">account_circle</ya-icon-button>
+                <div>游客帐户</div>
+                <br />
+            </div>
+            <ya-menu-item>
+                <span>
+                    <ya-icon-button>manage_accounts</ya-icon-button>
+                </span>
+                <span>账户设置</span>
+            </ya-menu-item>
+            <ya-menu-item>
+                <span>
+                    <ya-icon-button>settings</ya-icon-button>
+                </span>
+                <span>系统设置</span>
+            </ya-menu-item>
+            <ya-menu-item>
+                <span>
+                    <ya-icon-button>logout</ya-icon-button>
+                </span>
+                <span>登出</span>
+            </ya-menu-item>
+        </ya-menu>
+        <ya-dialog-login class="ya-dialog-login-view">
+            <div class="ya-dialog-login-sidebar">
+                <ya-image-css
+                    id="logo"
+                    class="ya-dialog-login-logo"
+                    auto-size="0"
+                    alt="logo"
+                ></ya-image-css>
+            </div>
+            <div class="ya-dialog-login-content">
+                <h1>
+                    <span class="ya-dialog-login-title-block"></span>用户登录
+                </h1>
+                <table id="loginTB">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class="material-icons-outlined">dns</span>
+                            </td>
+                            <td>
+                                <ya-text-box
+                                    class="ya-text-box-select"
+                                    id=""
+                                    value="server1"
+                                    placeholder="服务器"
+                                >
+                                    <ya-menu>
+                                        <ya-menu-item value="server1"
+                                            >虚拟服务器1</ya-menu-item
+                                        >
+                                        <ya-menu-item value="server2"
+                                            >虚拟服务器2</ya-menu-item
+                                        >
+                                        <ya-menu-item value="server3"
+                                            >虚拟服务器3</ya-menu-item
+                                        >
+                                        <ya-menu-item value="server4"
+                                            >虚拟服务器4</ya-menu-item
+                                        >
+                                        <ya-menu-item value="server5"
+                                            >虚拟服务器5</ya-menu-item
+                                        >
+                                        <ya-menu-item value="server6"
+                                            >虚拟服务器6</ya-menu-item
+                                        >
+                                        <ya-menu-item value="server7"
+                                            >虚拟服务器7</ya-menu-item
+                                        >
+                                        <ya-menu-item value="server8"
+                                            >虚拟服务器8</ya-menu-item
+                                        >
+                                        <ya-menu-item value="server9"
+                                            >虚拟服务器9</ya-menu-item
+                                        >
+                                    </ya-menu>
+                                    <div class="ya-text-box-rule" ya-mode="">
+                                        必须指定一个服务器
+                                    </div>
+                                </ya-text-box>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="material-icons-outlined"
+                                    >person</span
+                                >
+                            </td>
+                            <td>
+                                <ya-text-box value="demo" placeholder="用户名">
+                                    <div class="ya-text-box-rule">
+                                        必须指定一个用户名
+                                    </div>
+                                    <div
+                                        class="ya-text-box-rule"
+                                        ya-mode="^[a-zA-Z0-9\u4e00-\u9fa5_-]{3,32}$"
+                                    >
+                                        用户名在3-32位之间，由字母/数字/汉字组成
+                                    </div>
+                                </ya-text-box>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="material-icons-outlined"
+                                    >lock</span
+                                >
+                            </td>
+                            <td>
+                                <ya-text-box type="password" placeholder="密码">
+                                    <div class="ya-text-box-rule">
+                                        必须指定一个密码
+                                    </div>
+                                </ya-text-box>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="material-icons-outlined"
+                                    >event</span
+                                >
+                            </td>
+                            <td>
+                                <ya-text-box
+                                    type="datetime-local"
+                                    placeholder="登录过期时间"
+                                >
+                                    <div class="ya-text-box-rule">
+                                        必须指定一个时间
+                                    </div>
+                                </ya-text-box>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="btnbar">
+                    <ya-switch size="40" id="saveSession" value="1"
+                        >记住密码</ya-switch
+                    >
+                    <ya-button id="submit"
+                        ><span class="material-icons-outlined">person</span>
+                        提交</ya-button
+                    >
+                    <ya-button id="showdialog"
+                        ><span class="material-icons-outlined"
+                            >open_in_browser</span
+                        >
+                        弹框</ya-button
+                    >
+                </div>
+            </div>
+        </ya-dialog-login>
+        <!-- <div class="fill"></div> -->
+        <!-- <ya-scroll-view class="ya-full">
     <ya-view class="ya-view-article">
       <h1>不存在的夏天</h1>
       <p>灵缡心</p>
@@ -154,6 +229,12 @@
       <p>那个夏天&emsp;曾存在过&emsp;的爱恋</p>
     </ya-view>
   </ya-scroll-view> -->
-</body>
+        <ya-planar-graph id="ypg" width="1000" height="600"></ya-planar-graph>
+        <button id="ypgB">获取数据</button>
+        <button id="ypgC">Clear</button>
+        <button id="ypgD">Dispose</button>
 
+        <ya-table id="yaTable"></ya-table>
+        <button id="yTU">Update</button>
+    </body>
 </html>

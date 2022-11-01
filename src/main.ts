@@ -13,6 +13,8 @@ import YaSwitch from "./libYAUI/ya-switch/ya-switch";
 import YaSnackbar from "./libYAUI/ya-snackbar/ya-snackbar";
 import YaDialog from "./libYAUI/ya-dialog/ya-dialog";
 import YaImageCSS from "./libYAUI/ya-image-css/ya-image-css";
+import YaPlanarGraph from "./libYAUI/ya-planar-graph/ya-planar-graph";
+import YaTable from "./libYAUI/ya-table/ya-table";
 
 /**
  * 網頁載入完成後要執行的程式碼
@@ -34,6 +36,8 @@ export default class Main {
     YAUI.load(YaImageCSS);
     YAUI.loadF(YaSnackbar);
     YAUI.loadF(YaDialog);
+    YAUI.load(YaPlanarGraph);
+    YAUI.load(YaTable);
     // 點選圖示按鈕，開啟一個選單
     const btnMainMenu: YaIconButton = document.getElementById(
       "btnMainMenu"
@@ -156,6 +160,65 @@ export default class Main {
         false
       );
     });
+
+
+    const ypgView = document.getElementById("ypg") as YaPlanarGraph;
+    const ypgB = document.getElementById("ypgB") as HTMLButtonElement;
+    const ypgC = document.getElementById("ypgC") as HTMLButtonElement;
+    const ypgD = document.getElementById("ypgD") as HTMLButtonElement;
+    ypgB.onclick = () => {
+      console.log(ypgView.pointName);
+      console.log(ypgView.pointPositionList);
+    };
+    ypgC.onclick = () => {
+      ypgView.Clear();
+    };
+    ypgD.onclick = () => {
+      ypgView.Dispose();
+    };
+    const _dataStr =
+      "[{\"chartMonitorID\":1,\"height\":350,\"monitorID\":4,\"pointX\":435,\"pointXPercent\":0.87,\"pointY\":41,\"pointYPercent\":0.11714285714285715,\"projectID\":1,\"width\":500},{\"chartMonitorID\":3,\"height\":350,\"monitorID\":6,\"pointX\":36,\"pointXPercent\":0.072,\"pointY\":148,\"pointYPercent\":0.4228571428571429,\"projectID\":1,\"width\":500},{\"chartMonitorID\":2,\"height\":350,\"monitorID\":5,\"pointX\":443,\"pointXPercent\":0.886,\"pointY\":286,\"pointYPercent\":0.8171428571428572,\"projectID\":1,\"width\":500}]";
+    const _dataMap = JSON.parse(_dataStr);
+    ypgView.show(_dataMap);
+    ypgView.setBackGround("http://127.0.0.1:9999/ae28700f47355cd4f71b.jpg");
+
+    const yTable = document.getElementById("yaTable") as YaTable;
+    yTable.init(
+      ["T1", "T2", "T3"],
+      [
+        ["11", "12", "13"],
+        ["21", "22", "23"],
+        ["31", "32", "33"],
+      ],
+      ["<", "1", "2", "3", ">"],
+      "1",
+      (pageNumber) => {
+        yTable.SetPageNumber(["<", "1", "2", ">"], (pN) => {
+          yTable.Update(
+            ["b" + pN, "t2", "t3"],
+            [
+              ["a1", "a2", "a3"],
+              ["b1", "b2", "b3"],
+              ["c1", "c2", "c3"],
+            ],
+            pN
+          );
+        });
+        yTable.Update(
+          ["a" + pageNumber, "t2", "t3"],
+          [
+            ["a1", "a2", "a3"],
+            ["b1", "b2", "b3"],
+            ["c1", "c2", "c3"],
+          ],
+          pageNumber
+        );
+      }
+    );
+    const yTU = document.getElementById("yTU") as HTMLButtonElement;
+    yTU.onclick = () => {
+      yTable.Dispose();
+    };
   }
 
   chkLoginInfo(): boolean {
