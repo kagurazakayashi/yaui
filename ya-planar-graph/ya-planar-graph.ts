@@ -58,7 +58,7 @@ export default class PlanarGraph extends HTMLElement {
       const pGVMenu = document.createElement("div");
       pGVMenu.id = "pGVMenu";
       pGVMenu.style.display = "none";
-      pGVMenu.innerHTML = '<div class="pGVMItem">删除标点</div>';
+      pGVMenu.innerHTML = "<div class=\"pGVMItem\">删除标点</div>";
       document.body.appendChild(pGVMenu);
       // const pGVMenu = document.getElementById("pGVMenu");
 

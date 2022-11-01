@@ -3,7 +3,7 @@
  */
 export default class Table extends HTMLElement {
   static control = "ya-table";
-  curPage: string = "1";
+  curPage = "1";
 
   /**
    * 加载所需的样式等其他文件
@@ -33,7 +33,7 @@ export default class Table extends HTMLElement {
     bodyData: string[][],
     navigationList: string[],
     currentPage: string,
-    jumpPage: (pageNumber: string) => void = () => {}
+    jumpPage: (pageNumber: string) => void = () => null
   ) {
     this.curPage = currentPage;
     // headData = headData;
@@ -138,7 +138,7 @@ export default class Table extends HTMLElement {
    */
   SetPageNumber(
     navigationList: string[],
-    jumpPage: (pageNumber: string) => void = () => {}
+    jumpPage: (pageNumber: string) => void = () => null
   ) {
     if (navigationList.length > 0) {
       console.log(navigationList);
