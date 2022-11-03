@@ -1,7 +1,7 @@
 /**
  * 對話方塊（函式型）
  */
-export default class circleProgressBar extends HTMLElement {
+export default class CircleProgressBar extends HTMLElement {
   static control = "ya-circle-progress-bar";
   private maxVal = 0;
   private colorList: string[] = [];
@@ -12,7 +12,6 @@ export default class circleProgressBar extends HTMLElement {
    * 該函式由 YAUI 類呼叫，無需手工執行
    */
   static loadFile() {
-    require(`./${circleProgressBar.control}.css`);
   }
 
   // /**
@@ -81,8 +80,12 @@ export default class circleProgressBar extends HTMLElement {
       }
     }
     const progress = (now / this.maxVal) * 100;
-    const cl = document.getElementById("ya-circle-progress-bar-cl") as HTMLDivElement;
-    const cr = document.getElementById("ya-circle-progress-bar-cr") as HTMLDivElement;
+    const cl = document.getElementById(
+      "ya-circle-progress-bar-cl"
+    ) as HTMLDivElement;
+    const cr = document.getElementById(
+      "ya-circle-progress-bar-cr"
+    ) as HTMLDivElement;
     if (0 <= progress && progress <= 50) {
       const ldeg = 225 + (progress / 50) * 180;
       console.log("r", ldeg);

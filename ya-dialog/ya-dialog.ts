@@ -1,7 +1,7 @@
 /**
  * 對話方塊（函式型）
  */
-export default class Dialog {
+export default class YaDialog {
   static control = "ya-dialog";
   // dialog: HTMLDivElement;
   // bodyOverFlow: string = "auto";
@@ -11,7 +11,7 @@ export default class Dialog {
    * 該函式由 YAUI 類呼叫，無需手工執行
    */
   static loadFile() {
-    require(`./${Dialog.control}.css`);
+    require(`./${YaDialog.control}.css`);
   }
 
   // /**
@@ -24,33 +24,33 @@ export default class Dialog {
    * 顯示此對話方塊
    */
   static show(
-    option: yaDialogOption,
+    option: YaDialogOption,
     btnEqualWidth = true,
     btnEqualHeight = true
   ) {
     const bodyOverFlow: string = document.body.style.overflow;
     const dialog: HTMLDivElement = document.createElement("div");
-    dialog.className = Dialog.control + " ya-share-box";
+    dialog.className = YaDialog.control + " ya-share-box";
 
     const toast: HTMLDivElement = document.createElement("div");
-    toast.className = "ya-dialog-toast";
-    toast.id = "ya-dialog-toast";
-    toast.innerHTML =
-      "<div id=\"ya-dialog-toast-title\" class=\"title\"></div><div id=\"ya-dialog-toast-contain\" class=\"contain\"></div><div id=\"ya-dialog-toast-foot\" class=\"toastfoot\"><button id=\"ya-dialog-toast-ok\"></button><button id=\"ya-dialog-toast-cancel\"></button></div>";
-    dialog.innerHTML = "<div style='flex-grow: 1'></div>";
+    toast.className = YaDialog.control + "-toast";
+    toast.id = YaDialog.control + "-toast";
+    toast.innerHTML = `<div id="${YaDialog.control}-toast-title" class="title"></div><div id="${YaDialog.control}-toast-contain" class="contain"></div><div id="ya-dialog-toast-foot" class="toastfoot"><button id="${YaDialog.control}-toast-ok"></button><button id="${YaDialog.control}-toast-cancel"></button></div>`;
+    const flexGrow1 = "<div style='flex-grow: 1'></div>";
+    dialog.innerHTML = flexGrow1;
     dialog.appendChild(toast);
-    dialog.innerHTML += "<div style='flex-grow: 1'></div>";
+    dialog.innerHTML += flexGrow1;
 
-    const btnList: yaDialogButtonListOption[] = [];
+    const btnList: YaDialogButtonListOption[] = [];
     // let isShow = true;
 
-    // let btnOption = {} as yaDialogButtonListOption;
+    // let btnOption = {} as YaDialogButtonListOption;
 
     const tTitle = dialog.getElementsByClassName("title")[0] as HTMLDivElement;
     if (tTitle != null && option.title != null) {
       tTitle.innerHTML = option.title.value;
       if (option.title.style != null) {
-        Dialog._setStyle("tTitle", tTitle, option.title.style);
+        YaDialog._setStyle("tTitle", tTitle, option.title.style);
       }
     }
 
@@ -60,10 +60,10 @@ export default class Dialog {
     if (contain != null && option.contain != null) {
       contain.innerHTML = option.contain.value;
       if (option.title && option.title.style != null) {
-        Dialog._setStyle(
+        YaDialog._setStyle(
           "contain",
           contain,
-          option.contain.style as yaDialogStyle
+          option.contain.style as YaDialogStyle
         );
       }
     }
@@ -77,11 +77,11 @@ export default class Dialog {
       if (!(option.addBtn != null && option.addBtn)) foot.innerHTML = "";
       if (option.foot != null) {
         if (option.foot.style != null)
-          Dialog._setStyle("foot", foot, option.foot.style);
+          YaDialog._setStyle("foot", foot, option.foot.style);
         if (option.foot.items != null) {
           if (Array.isArray(option.foot.items)) {
             option.foot.items.forEach((item) => {
-              const btnOption = {} as yaDialogButtonListOption;
+              const btnOption = {} as YaDialogButtonListOption;
               if (item.element != null) {
                 btnOption.id = item.element.id;
                 foot.appendChild(item.element);
@@ -98,7 +98,7 @@ export default class Dialog {
                   if (item.class != null) footEle.className = item.class;
                   if (item.value != null) footEle.innerText = item.value;
                   if (item.style != null)
-                    Dialog._setStyle("footEle", footEle, item.style);
+                    YaDialog._setStyle("footEle", footEle, item.style);
 
                   foot.appendChild(footEle);
                 }
@@ -107,7 +107,7 @@ export default class Dialog {
                 btnOption.click = () => {
                   item.click();
                   if (item.isClose != null && item.isClose) {
-                    Dialog.close(bodyOverFlow);
+                    YaDialog.close(bodyOverFlow);
                   }
                 };
               }
@@ -122,8 +122,8 @@ export default class Dialog {
       let btnok: HTMLButtonElement | null = null;
       for (const key in btns) {
         if (Object.prototype.hasOwnProperty.call(btns, key)) {
-          const btnsE: HTMLButtonElement = btns[key] as HTMLButtonElement;
-          if (btnsE.id == "ya-dialog-toast-ok") {
+          const btnsE: HTMLButtonElement = btns[key];
+          if (btnsE.id == YaDialog.control + "-toast-ok") {
             btnok = btnsE;
           }
         }
@@ -131,14 +131,14 @@ export default class Dialog {
       if (btnok) {
         let isShow = true;
         const btnOption = {
-          id: "ya-dialog-toast-ok",
-        } as yaDialogButtonListOption;
+          id: YaDialog.control + "-toast-ok",
+        } as YaDialogButtonListOption;
         if (option.ok.value != null) btnok.innerText = option.ok.value;
         if (option.ok.click != null)
           btnOption.click = () => {
             option.ok.click();
             if (option.ok.isClose != null && option.ok.isClose)
-              Dialog.close(bodyOverFlow);
+              YaDialog.close(bodyOverFlow);
           };
         if (option.ok.show != null && !option.ok.show) {
           btnok.style.display = "none";
@@ -151,8 +151,8 @@ export default class Dialog {
       let btnC: HTMLButtonElement | null = null;
       for (const key in btns) {
         if (Object.prototype.hasOwnProperty.call(btns, key)) {
-          const btnsE: HTMLButtonElement = btns[key] as HTMLButtonElement;
-          if (btnsE.id == "ya-dialog-toast-cancel") {
+          const btnsE: HTMLButtonElement = btns[key];
+          if (btnsE.id == YaDialog.control + "-toast-cancel") {
             btnC = btnsE;
           }
         }
@@ -160,8 +160,8 @@ export default class Dialog {
       if (btnC && option.cancel != null) {
         let isShow = true;
         const btnOption = {
-          id: "ya-dialog-toast-cancel",
-        } as yaDialogButtonListOption;
+          id: YaDialog.control + "-toast-cancel",
+        } as YaDialogButtonListOption;
         if (option.cancel.value != null) btnC.innerText = option.cancel.value;
         if (option.cancel.click != null)
           btnOption.click = () => {
@@ -171,7 +171,7 @@ export default class Dialog {
                 option.cancel.isClose == null ||
                 (option.cancel.isClose != null && option.cancel.isClose)
               ) {
-                Dialog.close(bodyOverFlow);
+                YaDialog.close(bodyOverFlow);
               }
             }
           };
@@ -185,10 +185,10 @@ export default class Dialog {
 
       if (option.style != null) {
         const toast = dialog.getElementsByClassName(
-          "ya-dialog-toast"
+          YaDialog.control + "-toast"
         )[0] as HTMLDivElement;
-        Dialog._setStyle(
-          "document.getElementById(\"ya-dialog-toast\")",
+        YaDialog._setStyle(
+          `document.getElementById("${YaDialog.control}-toast")`,
           toast,
           option.style
         );
@@ -203,7 +203,7 @@ export default class Dialog {
 
     if (option.clickbackgroudClose != null && option.clickbackgroudClose) {
       dialog.addEventListener("click", () => {
-        Dialog.close(bodyOverFlow);
+        YaDialog.close(bodyOverFlow);
       });
     }
 
@@ -235,7 +235,7 @@ export default class Dialog {
     });
 
     const tFoot: HTMLDivElement = document.getElementById(
-      "ya-dialog-toast-foot"
+      YaDialog.control + "-toast-foot"
     ) as HTMLDivElement;
 
     if (footBtnAllWidth + 16 < tFoot.offsetWidth) {
@@ -251,7 +251,9 @@ export default class Dialog {
       });
     }
 
-    const tMain = document.getElementById("ya-dialog-toast") as HTMLDivElement;
+    const tMain = document.getElementById(
+      YaDialog.control + "-toast"
+    ) as HTMLDivElement;
     if (btnEqualHeight) tFoot.style.height = footBtnMaxHeight + "px";
     tMain.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -262,17 +264,19 @@ export default class Dialog {
    * 關閉並銷燬對話方塊
    */
   static close(bodyOverFlow: string) {
-    const dialog = document.getElementsByClassName("ya-dialog");
+    const dialog = document.getElementsByClassName(YaDialog.control);
     if (!dialog) return;
-    for (let i = 0; i < dialog.length; i++) {
-      const element = dialog[i];
-      if (!element) continue;
-      element.remove();
+    for (const key in dialog) {
+      if (Object.prototype.hasOwnProperty.call(dialog, key)) {
+        const element = dialog[key];
+        if (!element) continue;
+        element.remove();
+      }
     }
     document.body.style.overflow = bodyOverFlow;
   }
 
-  static _setStyle(id: string, el: HTMLElement, vs: yaDialogStyle) {
+  static _setStyle(id: string, el: HTMLElement, vs: YaDialogStyle) {
     if (vs.maxWidth != null) el.style.maxWidth = vs.maxWidth;
     if (vs.maxHeight != null) el.style.maxHeight = vs.maxHeight;
     if (vs.minWidth != null) el.style.minWidth = vs.minWidth;
@@ -297,49 +301,49 @@ export default class Dialog {
   }
 }
 
-interface yaDialogOption {
+interface YaDialogOption {
   clickbackgroudClose?: boolean; //默认值:false;点击背景是否关闭
   title?: {
     value: string; //内容
-    style?: yaDialogStyle; //标题样式
+    style?: YaDialogStyle; //标题样式
   }; //标题部分
   contain?: {
     value: string; //内容
-    style?: yaDialogStyle; //内容部分样式
+    style?: YaDialogStyle; //内容部分样式
   }; //内容部分
   foot?: {
-    items: yaDialogFootItems[] | string;
-    style?: yaDialogStyle; //按钮部分样式
+    items: YaDialogFootItems[] | string;
+    style?: YaDialogStyle; //按钮部分样式
   }; //按钮部分
   ok: {
     show?: boolean; //默认值:true;是否显示
     isClose?: boolean; //默认值:false;点击控件后是否关闭对话框
     click: () => void; //控件的点击方法
     value: string; //内容
-    style?: yaDialogStyle; //确认按钮样式
+    style?: YaDialogStyle; //确认按钮样式
   }; //确认按钮
   cancel?: {
     show?: boolean; //默认值:true;是否显示
     isClose?: boolean; //默认值:true;点击控件后是否关闭对话框
     click: () => void; //控件的点击方法
     value: string; //内容
-    style?: yaDialogStyle; //确认按钮样式
+    style?: YaDialogStyle; //确认按钮样式
   }; //取消按钮
   addBtn?: boolean; //默认值:false;是否在原按钮后添加foot.items中的内容
-  style?: yaDialogStyle; //对话框样式
+  style?: YaDialogStyle; //对话框样式
 }
 
-interface yaDialogFootItems {
+interface YaDialogFootItems {
   element?: HTMLElement; //控件，有此项时忽略`tagName`,`id`,`class`,`value`,`style`
   tagName?: string; //需要创建的控件
   id?: string; //控件的ID
   class?: string; //控件的class
   value?: string; //控件的内容
   click: () => void; //控件的点击方法
-  style?: yaDialogStyle; //样式
+  style?: YaDialogStyle; //样式
   isClose?: boolean; //默认值:false;点击控件后是否关闭对话框
 }
-interface yaDialogStyle {
+interface YaDialogStyle {
   maxWidth?: string;
   maxHeight?: string;
   minWidth?: string;
@@ -361,7 +365,7 @@ interface yaDialogStyle {
   padding?: string;
 }
 
-interface yaDialogButtonListOption {
+interface YaDialogButtonListOption {
   id: string;
   // innerText?: string;
   click?: () => void;

@@ -1,7 +1,7 @@
 /**
  * 對話方塊（函式型）
  */
-export default class Table extends HTMLElement {
+export default class YaTable extends HTMLElement {
   static control = "ya-table";
   curPage = "1";
 
@@ -10,7 +10,7 @@ export default class Table extends HTMLElement {
    * 該函式由 YAUI 類呼叫，無需手工執行
    */
   static loadFile() {
-    require(`./${Table.control}.css`);
+    require(`./${YaTable.control}.css`);
   }
 
   // /**
@@ -38,10 +38,10 @@ export default class Table extends HTMLElement {
     this.curPage = currentPage;
     // headData = headData;
     // bodyData = bodyData;
-    this.className = Table.control;
+    this.className = YaTable.control;
     const tableDiv = document.createElement("div");
 
-    tableDiv.className = Table.control + "-view";
+    tableDiv.className = YaTable.control + "-view";
     const table = document.createElement("table");
     table.setAttribute("cellpadding", "0");
     table.setAttribute("cellspacing", "0");
@@ -68,13 +68,12 @@ export default class Table extends HTMLElement {
     this.Update(headData, bodyData, currentPage);
 
     const spans = this.getElementsByTagName("span");
-    for (let i = 0; i < spans.length; i++) {
-      const span = spans[i];
+    for (const element of spans) {
+      const span = element;
       span.onclick = () => {
         if (this.curPage != span.innerText) {
-          for (let i = 0; i < spans.length; i++) {
-            const s = spans[i];
-            s.className = "";
+          for (const element of spans) {
+            element.className = "";
           }
           span.className = "current";
           this.curPage = span.innerText;
@@ -92,13 +91,11 @@ export default class Table extends HTMLElement {
    */
   Update(headData: string[], bodyData: string[][], currentPage: string) {
     const tables = this.getElementsByTagName("table");
-    for (let ti = 0; ti < tables.length; ti++) {
-      const table = tables[ti];
+    for (const table of tables) {
       table.innerHTML = "";
 
       const headDatatr = document.createElement("tr");
-      for (let i = 0; i < headData.length; i++) {
-        const h = headData[i];
+      for (const h of headData) {
         const th = document.createElement("th");
         th.innerText = h;
         headDatatr.appendChild(th);
@@ -106,11 +103,9 @@ export default class Table extends HTMLElement {
       table.appendChild(headDatatr);
 
       const tbodyData = document.createElement("tbody");
-      for (let i = 0; i < bodyData.length; i++) {
-        const btrData = bodyData[i];
+      for (const btrData of bodyData) {
         const btr = document.createElement("tr");
-        for (let j = 0; j < btrData.length; j++) {
-          const btdData = btrData[j];
+        for (const btdData of btrData) {
           const td = document.createElement("td");
           td.innerText = btdData;
           btr.appendChild(td);
@@ -120,8 +115,7 @@ export default class Table extends HTMLElement {
       table.appendChild(tbodyData);
     }
     const spans = this.getElementsByTagName("span");
-    for (let i = 0; i < spans.length; i++) {
-      const span = spans[i];
+    for (const span of spans) {
       if (span.innerText == currentPage) {
         this.curPage = span.innerText;
         span.className = "current";
@@ -141,12 +135,8 @@ export default class Table extends HTMLElement {
     jumpPage: (pageNumber: string) => void = () => null
   ) {
     if (navigationList.length > 0) {
-      console.log(navigationList);
       const navigationDivs = this.getElementsByClassName("navigation");
-      console.log(navigationDivs);
-      for (let nDi = 0; nDi < navigationDivs.length; nDi++) {
-        const navigationDiv = navigationDivs[nDi];
-        console.log(navigationDiv);
+      for (const navigationDiv of navigationDivs) {
         navigationDiv.innerHTML = "";
         for (let i = 0; i < navigationList.length; i++) {
           const nav = navigationList[i];
@@ -162,12 +152,10 @@ export default class Table extends HTMLElement {
       }
 
       const spans = this.getElementsByTagName("span");
-      for (let i = 0; i < spans.length; i++) {
-        const span = spans[i];
+      for (const span of spans) {
         span.onclick = () => {
           if (this.curPage != span.innerText) {
-            for (let i = 0; i < spans.length; i++) {
-              const s = spans[i];
+            for (const s of spans) {
               s.className = "";
             }
             span.className = "current";
