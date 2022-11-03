@@ -15,6 +15,7 @@ import YaDialog from "./libYAUI/ya-dialog/ya-dialog";
 import YaImageCSS from "./libYAUI/ya-image-css/ya-image-css";
 import YaPlanarGraph from "./libYAUI/ya-planar-graph/ya-planar-graph";
 import YaTable from "./libYAUI/ya-table/ya-table";
+import YaCircleProgressBar from "./libYAUI/ya-circle-progress-bar/ya-circle-progress-bar";
 
 /**
  * 網頁載入完成後要執行的程式碼
@@ -38,6 +39,7 @@ export default class Main {
     YAUI.loadF(YaDialog);
     YAUI.load(YaPlanarGraph);
     YAUI.load(YaTable);
+    YAUI.load(YaCircleProgressBar);
     // 點選圖示按鈕，開啟一個選單
     const btnMainMenu: YaIconButton = document.getElementById(
       "btnMainMenu"
@@ -219,6 +221,15 @@ export default class Main {
     yTU.onclick = () => {
       yTable.Dispose();
     };
+    const ycpbView = document.getElementById("ycpb") as YaCircleProgressBar;
+    ycpbView.init(
+      80,
+      100,
+      ["yellow", "green", "red", "black"],
+      "#858788",
+      "#fff",
+      true
+    );
   }
 
   chkLoginInfo(): boolean {
