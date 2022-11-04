@@ -2,7 +2,9 @@
 
 # YAUI
 
-雅诗自用 UI 库
+一个 HTML5 网页外观库，
+基于自定义元素（custom elements）提供组件化的原生 TypeScript 开发体验。
+需要浏览器支持 ES6 。
 
 **正在开发中...**
 
@@ -35,6 +37,12 @@
   - [x] 进出动画
   - [x] 同时显示多个
   - [x] 支持四角显示
+- [x] 表格 `ya-table`
+  - [x] 翻页功能
+- [ ] 进度条
+  - [ ] 一般进度条
+  - [x] 圆形进度条 `ya-circle-progress-bar`
+    - [x] 数值显示
 
 # 分支
 
@@ -52,7 +60,5 @@
 7. 运行: `npm run start`
 
 ## 协议
-
-- 根据本模板创建的项目可以自由变更许可协议，请尽快将作者信息、项目信息、许可信息改为自己的。
 
 Copyright (c) 2022 KagurazakaYashi YAUI is licensed under Mulan PSL v2. You can use this software according to the terms and conditions of the Mulan PSL v2. You may obtain a copy of Mulan PSL v2 at: http://license.coscl.org.cn/MulanPSL2 THIS SOFTWARE IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT, MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE. See the Mulan PSL v2 for more details.

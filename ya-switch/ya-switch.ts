@@ -13,6 +13,15 @@ export default class YaSwitch extends HTMLElement {
   }
 
   /**
+   * 將某個物件視為本控制元件
+   * @param {any} obj 本控制元件物件
+   * @return {YaSwitch} 本控制元件物件
+   */
+  static f(obj: any): YaSwitch {
+    return obj as YaSwitch;
+  }
+
+  /**
    * 對該控制元件的 UI 和行為進行準備工作
    */
   constructor() {

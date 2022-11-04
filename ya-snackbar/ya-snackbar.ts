@@ -13,6 +13,15 @@ export default class YaSnackbar {
   }
 
   /**
+   * 將某個物件視為本控制元件
+   * @param {any} obj 本控制元件物件
+   * @return {YaSnackbar} 本控制元件物件
+   */
+  static f(obj: any): YaSnackbar {
+    return obj as YaSnackbar;
+  }
+
+  /**
    * 顯示 Snackbar
    * @param {string} text 要顯示的文字
    * @param {string} title 標題

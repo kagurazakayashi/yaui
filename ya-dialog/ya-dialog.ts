@@ -14,6 +14,15 @@ export default class YaDialog {
     require(`./${YaDialog.control}.css`);
   }
 
+  /**
+   * 將某個物件視為本控制元件
+   * @param {any} obj 本控制元件物件
+   * @return {YaDialog} 本控制元件物件
+   */
+  static f(obj: any): YaDialog {
+    return obj as YaDialog;
+  }
+
   // /**
   //  * 建構函式
   //  */

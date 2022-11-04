@@ -21,6 +21,15 @@ export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
   }
 
   /**
+   * 將某個物件視為本控制元件
+   * @param {any} obj 本控制元件物件
+   * @return {YaTextBox} 本控制元件物件
+   */
+  static f(obj: any): YaTextBox {
+    return obj as YaTextBox;
+  }
+
+  /**
    * 對該控制元件的 UI 和行為進行準備工作
    */
   constructor() {

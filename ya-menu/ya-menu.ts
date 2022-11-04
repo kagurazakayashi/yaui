@@ -1,7 +1,7 @@
 /**
  * 彈出式選單
  */
-export interface YaMenuDelegate {
+ export interface YaMenuDelegate {
   yaClickMenuItem(menu: YaMenu, item: HTMLElement, index: number): void;
 }
 
@@ -17,6 +17,15 @@ export default class YaMenu extends HTMLElement {
    */
   static loadFile() {
     require(`./${YaMenu.control}.css`);
+  }
+
+  /**
+   * 將某個物件視為本控制元件
+   * @param {any} obj 本控制元件物件
+   * @return {YaMenu} 本控制元件物件
+   */
+  static f(obj: any): YaMenu {
+    return obj as YaMenu;
   }
 
   /**

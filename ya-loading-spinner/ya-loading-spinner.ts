@@ -13,6 +13,15 @@ export default class YaLoadingSpinner {
   }
 
   /**
+   * 將某個物件視為本控制元件
+   * @param {any} obj 本控制元件物件
+   * @return {YaLoadingSpinner} 本控制元件物件
+   */
+  static f(obj: any): YaLoadingSpinner {
+    return obj as YaLoadingSpinner;
+  }
+
+  /**
    * 生成一個載入圓圈
    * @param {number} styleID 样式 ID
    * @param {number} styleID 样式 ID

@@ -15,6 +15,15 @@ export default class PlanarGraph extends HTMLElement {
     require(`./${PlanarGraph.control}.css`);
   }
 
+  /**
+   * 將某個物件視為本控制元件
+   * @param {any} obj 本控制元件物件
+   * @return {PlanarGraph} 本控制元件物件
+   */
+  static f(obj: any): PlanarGraph {
+    return obj as PlanarGraph;
+  }
+
   // /**
   //  * 建構函式
   //  */

@@ -12,6 +12,16 @@ export default class CircleProgressBar extends HTMLElement {
    * 該函式由 YAUI 類呼叫，無需手工執行
    */
   static loadFile() {
+    require(`./${CircleProgressBar.control}.css`);
+  }
+
+  /**
+   * 將某個物件視為本控制元件
+   * @param {any} obj 本控制元件物件
+   * @return {CircleProgressBar} 本控制元件物件
+   */
+  static f(obj: any): CircleProgressBar {
+    return obj as CircleProgressBar;
   }
 
   // /**

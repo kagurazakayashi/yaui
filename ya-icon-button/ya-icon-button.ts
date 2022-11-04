@@ -13,6 +13,15 @@ export default class YaIconButton extends HTMLElement {
   }
 
   /**
+   * 將某個物件視為本控制元件
+   * @param {any} obj 本控制元件物件
+   * @return {YaIconButton} 本控制元件物件
+   */
+  static f(obj: any): YaIconButton {
+    return obj as YaIconButton;
+  }
+
+  /**
    * 對該控制元件的 UI 和行為進行準備工作
    */
   constructor() {

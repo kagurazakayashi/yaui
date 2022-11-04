@@ -13,6 +13,15 @@ export default class YaTable extends HTMLElement {
     require(`./${YaTable.control}.css`);
   }
 
+  /**
+   * 將某個物件視為本控制元件
+   * @param {any} obj 本控制元件物件
+   * @return {YaTable} 本控制元件物件
+   */
+  static f(obj: any): YaTable {
+    return obj as YaTable;
+  }
+
   // /**
   //  * 建構函式
   //  */
