@@ -27,9 +27,13 @@ export default class YaView extends HTMLElement {
   constructor() {
     super();
     this.className = YaView.control + " ya-share-box " + this.className;
-    const bg: HTMLSpanElement = document.createElement("span");
-    bg.className = "ya-share-box-bg";
-    this.insertBefore(bg, this.firstChild);
+    const bgName = "ya-share-box-bg";
+    const bgs: HTMLCollectionOf<Element> = this.getElementsByClassName(bgName);
+    if (bgs.length == 0) {
+      const bg = document.createElement("div");
+      bg.className = bgName;
+      this.insertBefore(bg, this.firstChild);
+    }
     if (this.className.indexOf("ya-view-article") >= 0) {
       setTimeout(() => {
         this.resizeAppBar();

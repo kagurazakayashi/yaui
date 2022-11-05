@@ -1,0 +1,15 @@
+.ya-flow-layout-panel {
+  overflow-x: initial;
+  overflow-y: auto;
+}
+
+.ya-flow-layout-panel-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  justify-content: space-evenly;
+  grid-template-columns: repeat(auto-fill, 300px);
+  grid-gap: 10px;
+}
