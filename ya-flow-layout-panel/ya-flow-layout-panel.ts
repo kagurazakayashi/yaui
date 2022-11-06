@@ -1,3 +1,6 @@
+/**
+ * 卡片列表布局面板
+ */
 export default class YaFlowLayoutPanel extends HTMLElement {
   static control = "ya-flow-layout-panel";
 
