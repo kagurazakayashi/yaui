@@ -2,7 +2,7 @@
  * 對話方塊（函式型）
  */
 export default class CircleProgressBar extends HTMLElement {
-  static control = "ya-circle-progress-bar";
+  static control = "ya-progress-bar-circle";
   private maxVal = 0;
   private colorList: string[] = [];
   private showValue = true;
@@ -44,21 +44,21 @@ export default class CircleProgressBar extends HTMLElement {
     textcolor = "#000",
     showText = true
   ) {
-    this.className = "ya-circle-progress-bar";
+    this.className = "ya-progress-bar-circle";
     this.style.border = "9px solid " + backgroundColor;
 
     const dleft = document.createElement("div");
-    dleft.className = "ya-circle-progress-bar-left";
+    dleft.className = "ya-progress-bar-circle-left";
     const leftCircle = document.createElement("div");
-    leftCircle.id = "ya-circle-progress-bar-cl";
-    leftCircle.className = "ya-circle-progress-bar-circle";
+    leftCircle.id = "ya-progress-bar-circle-cl";
+    leftCircle.className = "ya-progress-bar-circle-circle";
     dleft.appendChild(leftCircle);
 
     const dright = document.createElement("div");
-    dright.className = "ya-circle-progress-bar-right";
+    dright.className = "ya-progress-bar-circle-right";
     const rightCircle = document.createElement("div");
-    rightCircle.id = "ya-circle-progress-bar-cr";
-    rightCircle.className = "ya-circle-progress-bar-circle";
+    rightCircle.id = "ya-progress-bar-circle-cr";
+    rightCircle.className = "ya-progress-bar-circle-circle";
     dright.appendChild(rightCircle);
 
     this.appendChild(dleft);
@@ -66,7 +66,7 @@ export default class CircleProgressBar extends HTMLElement {
     this.showValue = showText;
     if (showText) {
       const progressNumber = document.createElement("div");
-      progressNumber.id = "ya-circle-progress-bar-progress-number";
+      progressNumber.id = "ya-progress-bar-circle-progress-number";
       progressNumber.style.color = textcolor;
       this.appendChild(progressNumber);
     }
@@ -83,7 +83,7 @@ export default class CircleProgressBar extends HTMLElement {
   SetProgress(now: number) {
     if (this.showValue) {
       const progressNumber = document.getElementById(
-        "ya-circle-progress-bar-progress-number"
+        "ya-progress-bar-circle-progress-number"
       ) as HTMLDivElement | null;
       if (progressNumber != null) {
         progressNumber.innerText = ((now / this.maxVal) * 100).toFixed(1);
@@ -91,10 +91,10 @@ export default class CircleProgressBar extends HTMLElement {
     }
     const progress = (now / this.maxVal) * 100;
     const cl = document.getElementById(
-      "ya-circle-progress-bar-cl"
+      "ya-progress-bar-circle-cl"
     ) as HTMLDivElement;
     const cr = document.getElementById(
-      "ya-circle-progress-bar-cr"
+      "ya-progress-bar-circle-cr"
     ) as HTMLDivElement;
     if (0 <= progress && progress <= 50) {
       const ldeg = 225 + (progress / 50) * 180;

@@ -1,4 +1,4 @@
-.ya-proportional-line {
+.ya-progress-bar {
   display: inline-block;
   position: relative;
   border-radius: 1em;
@@ -6,15 +6,10 @@
   background-color: lightgray;
 }
 
-.ya-proportional-line-item {
+.ya-progress-bar-item {
   position: absolute;
   height: 100%;
   transition: all 0.3s linear;
-}
-
-.ya-proportional-line-wait {
-  position: absolute;
-  height: 100%;
-  width: 80%;
   background-color: skyblue;
 }
+

@@ -1,4 +1,4 @@
-.ya-circle-progress-bar {
+.ya-progress-bar-circle {
   position: relative;
   width: 60px;
   height: 60px;
@@ -7,22 +7,22 @@
 
   display: block;
 }
-.ya-circle-progress-bar-left,
-.ya-circle-progress-bar-right {
+.ya-progress-bar-circle-left,
+.ya-progress-bar-circle-right {
   position: absolute;
   width: 40px;
   height: 80px;
   top: -10px;
   overflow: hidden;
 }
-.ya-circle-progress-bar-left {
+.ya-progress-bar-circle-left {
   left: -10px;
 }
-.ya-circle-progress-bar-right {
+.ya-progress-bar-circle-right {
   right: -10px;
 }
 
-.ya-circle-progress-bar-circle {
+.ya-progress-bar-circle-circle {
   position: absolute;
   width: 60px;
   height: 60px;
@@ -30,18 +30,18 @@
   border-radius: 50%;
   border-top: 10px solid blueviolet;
 }
-#ya-circle-progress-bar-cl {
+#ya-progress-bar-circle-cl {
   left: 1px;
   transform: rotate(135deg);
   border-left: 10px solid blueviolet;
 }
-#ya-circle-progress-bar-cr {
+#ya-progress-bar-circle-cr {
   right: 1px;
   transform: rotate(225deg);
   border-right: 10px solid blueviolet;
 }
 
-#ya-circle-progress-bar-progress-number {
+#ya-progress-bar-circle-progress-number {
   width: 60px;
   height: 60px;
   line-height: 60px;
