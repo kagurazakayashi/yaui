@@ -1,6 +1,13 @@
 /**
  * 卡片列表佈局面板
  */
+
+// 內容框架
+export class YaFlowLayoutPanelContent extends HTMLElement {
+  static control = "ya-flow-layout-panel-content";
+}
+
+// 卡片列表佈局面板
 export default class YaFlowLayoutPanel extends HTMLElement {
   static control = "ya-flow-layout-panel";
 
@@ -30,20 +37,20 @@ export default class YaFlowLayoutPanel extends HTMLElement {
     this.resize();
   }
 
-  resize(box: HTMLDivElement | null = null) {
+  resize(box: YaFlowLayoutPanelContent | null = null) {
     if (box == null) {
-      const boxs: HTMLCollectionOf<Element> = this.getElementsByClassName(
-        YaFlowLayoutPanel.control + "-content"
+      const boxs: HTMLCollectionOf<Element> = this.getElementsByTagName(
+        YaFlowLayoutPanelContent.control
       );
       if (boxs.length > 0) {
-        box = boxs[0] as HTMLDivElement;
+        box = boxs[0] as YaFlowLayoutPanelContent;
       } else {
-        box = document.createElement("div");
-        box.className = YaFlowLayoutPanel.control + "-content";
+        box = document.createElement(YaFlowLayoutPanelContent.control);
         box.innerHTML = this.innerHTML;
         this.innerHTML = "";
         this.appendChild(box);
       }
+      box.className = YaFlowLayoutPanelContent.control;
     }
     const firstElement: Element | null = box.firstElementChild;
     if (firstElement != null) {

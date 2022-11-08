@@ -28,6 +28,7 @@ export default class YaShare {
   ) {
     const control: any = constructor;
     const controlName: string = control.control;
+    // console.log("load " + controlName);
     window.customElements.define(control.control, constructor, options);
     for (const loaded of window.yaLoaded) {
       if (loaded == controlName) {
