@@ -118,3 +118,32 @@ export default class YaProgressBar extends HTMLElement {
     }
     return percentages;
   }
+
+  /**
+   * 建立等待條形動畫
+   * @param {boolean} isVisible 是否以等待動畫模式顯示
+   * @return {boolean} 是否之前已經建立等待動畫模式
+   */
+  waitAni(isVisible = true): boolean {
+    const nClass = `${YaProgressBar.control}-wait`;
+    const waits: HTMLCollectionOf<Element> =
+      this.getElementsByClassName(nClass);
+    if (waits.length > 0) {
+      // wait = waits[0] as HTMLSpanElement;
+      if (!isVisible) {
+        for (const key in waits) {
+          if (Object.prototype.hasOwnProperty.call(waits, key)) {
+            const rmWaits = waits[key];
+            rmWaits.remove();
+          }
+        }
+      }
+      return true;
+    } else if (isVisible) {
+      const wait: HTMLSpanElement = document.createElement("span");
+      wait.className = nClass;
+      this.appendChild(wait);
+    }
+    return false;
+  }
+}

@@ -13,3 +13,20 @@
   background-color: skyblue;
 }
 
+.ya-progress-bar-wait {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 1em;
+  background-color: skyblue;
+  animation: ya-progress-bar-wait-a 1s ease-in-out infinite;
+}
+
+@keyframes ya-progress-bar-wait-a {
+  0% {
+    transform: translate(-100%);
+  }
+  100% {
+    transform: translate(100%);
+  }
+}
