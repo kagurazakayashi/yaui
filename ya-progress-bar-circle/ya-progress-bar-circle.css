@@ -1,11 +1,22 @@
+@font-face {
+  font-family: "DigitalNumbers-Regular";
+  src: url("../fonts/digital-numbers-font/DigitalNumbers-Regular.woff2")
+      format("woff2"),
+    url("../fonts/digital-numbers-font/DigitalNumbers-Regular.woff")
+      format("woff"),
+    url("../fonts/digital-numbers-font/DigitalNumbers-Regular.ttf")
+      format("truetype");
+}
+
 .ya-progress-bar-circle {
   position: relative;
   width: 60px;
   height: 60px;
   border-radius: 50%;
   color: transparent;
-
   display: block;
+  border-width: 9px;
+  border-style: solid;
 }
 .ya-progress-bar-circle-left,
 .ya-progress-bar-circle-right {
@@ -30,22 +41,24 @@
   border-radius: 50%;
   border-top: 10px solid blueviolet;
 }
-#ya-progress-bar-circle-cl {
+.ya-progress-bar-circle-cl {
   left: 1px;
   transform: rotate(135deg);
   border-left: 10px solid blueviolet;
 }
-#ya-progress-bar-circle-cr {
+.ya-progress-bar-circle-cr {
   right: 1px;
   transform: rotate(225deg);
   border-right: 10px solid blueviolet;
 }
 
-#ya-progress-bar-circle-progress-number {
+.ya-progress-bar-circle-progress-number {
   width: 60px;
   height: 60px;
   line-height: 60px;
   text-align: center;
-  font-size: 20pt;
+  font-size: 20px;
   font-weight: lighter;
+  font-family: "DigitalNumbers-Regular";
+  color: #000;
 }

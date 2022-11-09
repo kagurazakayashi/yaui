@@ -1,0 +1,3 @@
+[submodule "fonts/digital-numbers-font"]
+	path = fonts/digital-numbers-font
+	url = https://github.com/kagurazakayashi/digital-numbers-font.git

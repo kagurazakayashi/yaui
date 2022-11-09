@@ -29,51 +29,65 @@ export default class CircleProgressBar extends HTMLElement {
   //  */
   constructor() {
     super();
+    const colors: string | null = this.getAttribute("colors");
   }
 
   /**
-   * 顯示此對話方塊
-   * @param {number} now 当前值
-   * @param {number} max 最大值
+   * 更新配置
+   * @param {number} value 當前值
+   * @param {number} maxVal 最大值
+   * @param {string} colors 階段顏色值（平均分配刻度）
+   * 支援的格式示例：
+   * `#F00` 顯示為紅色
+   * `50:#F00` 當百分比大於等於 50 時顯示為紅色
+   * `0:#0F0;50:#00F;100:#F00` 當百分比大於等於 0 時，顯示為綠色；當百分比大於等於 50 時，顯示為藍色；當百分比大於等於 100 時，顯示為紅色
+   * `#0F0;50:#00F;100:#F00` 同上，初始值可只寫顏色。
+   * @param {number} numShow 顯示小數位數。-1 為不顯示，0 為整數，1 為一位小數，2 為兩位小數，以此類推。
+   * @param {string} text 要在圓環中顯示的文字。將覆蓋 numShow 設定。
+   * @return {number} 進度百分比
    */
-  init(
-    now: number,
-    max: number,
-    colors: string[],
-    backgroundColor = "transparent",
-    textcolor = "#000",
-    showText = true
-  ) {
-    this.className = "ya-progress-bar-circle";
-    this.style.border = "9px solid " + backgroundColor;
+  update(
+    value: number,
+    maxVal: number,
+    colors: string,
+    numShow = 1,
+    text = ""
+  ): number {
+    this.setAttribute("value", value.toString());
+    this.setAttribute("maxVal", maxVal.toString());
+    this.setAttribute("colors", colors);
+    this.setAttribute("numShow", numShow.toString());
+    if (value > maxVal) {
+      maxVal = value;
+    }
+    this.className = YaProgressBarCircle.control;
 
-    const dleft = document.createElement("div");
-    dleft.className = "ya-progress-bar-circle-left";
-    const leftCircle = document.createElement("div");
-    leftCircle.id = "ya-progress-bar-circle-cl";
-    leftCircle.className = "ya-progress-bar-circle-circle";
-    dleft.appendChild(leftCircle);
-
-    const dright = document.createElement("div");
-    dright.className = "ya-progress-bar-circle-right";
-    const rightCircle = document.createElement("div");
-    rightCircle.id = "ya-progress-bar-circle-cr";
-    rightCircle.className = "ya-progress-bar-circle-circle";
-    dright.appendChild(rightCircle);
-
-    this.appendChild(dleft);
-    this.appendChild(dright);
-    this.showValue = showText;
-    if (showText) {
-      const progressNumber = document.createElement("div");
-      progressNumber.id = "ya-progress-bar-circle-progress-number";
-      progressNumber.style.color = textcolor;
-      this.appendChild(progressNumber);
+    const dleftClass = YaProgressBarCircle.control + "-left";
+    const dlefts = this.getElementsByClassName(dleftClass);
+    if (dlefts.length == 0) {
+      const dleft = document.createElement("div");
+      dleft.className = dleftClass;
+      const leftCircle = document.createElement("div");
+      leftCircle.className = `${YaProgressBarCircle.control}-circle ${YaProgressBarCircle.control}-cl`;
+      dleft.appendChild(leftCircle);
+      this.appendChild(dleft);
     }
 
-    this.maxVal = max;
-    this.colorList = colors;
-    this.SetProgress(now);
+    const drightClass = YaProgressBarCircle.control + "-right";
+    const drights = this.getElementsByClassName(drightClass);
+    if (drights.length == 0) {
+      const dright = document.createElement("div");
+      dright.className = drightClass;
+      const rightCircle = document.createElement("div");
+      rightCircle.className = `${YaProgressBarCircle.control}-circle ${YaProgressBarCircle.control}-cr`;
+      dright.appendChild(rightCircle);
+      this.appendChild(dright);
+    }
+
+    this.numShow = numShow;
+    this.maxVal = maxVal;
+    this.colors = colors;
+    return this.setProgress(value, text);
   }
 
   /**
