@@ -37,7 +37,9 @@ export default class YaTopAppBar extends HTMLElement {
       this.style.transition = "top 0.5s";
       this.addMoveEventListener();
     }
-    this.className = YaTopAppBar.control + " ya-share-box " + this.className;
+    if (this.className.indexOf(YaTopAppBar.control) < 0) {
+      this.className = YaTopAppBar.control + " ya-share-box " + this.className;
+    }
     const iconBtns: HTMLCollectionOf<Element> =
       this.getElementsByTagName("ya-icon-button");
     for (const key in iconBtns) {

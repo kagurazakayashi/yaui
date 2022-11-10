@@ -26,7 +26,9 @@ export default class YaDialogLogin extends HTMLElement {
    */
   constructor() {
     super();
-    this.className = YaDialogLogin.control + " " + this.className;
+    if (this.className.indexOf(YaDialogLogin.control) < 0) {
+      this.className = YaDialogLogin.control + " " + this.className;
+    }
     // ya-dialog-login-add-side
     // const sidebars: HTMLCollectionOf<Element> = this.getElementsByClassName(
     //   YaDialogLogin.control + "-sidebar"

@@ -34,7 +34,9 @@ export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
    */
   constructor() {
     super();
-    this.className = YaTextBox.control + " ya-share-box " + this.className;
+    if (this.className.indexOf(YaTextBox.control) < 0) {
+      this.className = YaTextBox.control + " ya-share-box " + this.className;
+    }
     this.input = document.createElement("input");
     this.input.readOnly = this.getAttribute("readonly") != null;
     const type: string = this.getAttribute("type") ?? "";

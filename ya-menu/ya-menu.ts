@@ -1,7 +1,7 @@
 /**
  * 彈出式選單
  */
- export interface YaMenuDelegate {
+export interface YaMenuDelegate {
   yaClickMenuItem(menu: YaMenu, item: HTMLElement, index: number): void;
 }
 
@@ -37,7 +37,9 @@ export default class YaMenu extends HTMLElement {
     if (toSize && toSize.length > 0) {
       return;
     }
-    this.className = YaMenu.control + " ya-share-box " + this.className;
+    if (this.className.indexOf(YaMenu.control) < 0) {
+      this.className = YaMenu.control + " ya-share-box " + this.className;
+    }
     this.bg.className = "ya-share-box-bg";
     this.insertBefore(this.bg, this.firstChild);
     const items: HTMLCollectionOf<Element> =

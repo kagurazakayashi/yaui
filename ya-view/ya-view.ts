@@ -26,7 +26,9 @@ export default class YaView extends HTMLElement {
    */
   constructor() {
     super();
-    this.className = YaView.control + " ya-share-box " + this.className;
+    if (this.className.indexOf(YaView.control) < 0) {
+      this.className = YaView.control + " ya-share-box " + this.className;
+    }
     const bgName = "ya-share-box-bg";
     const bgs: HTMLCollectionOf<Element> = this.getElementsByClassName(bgName);
     if (bgs.length == 0) {

@@ -28,8 +28,10 @@ export default class YaButton extends HTMLElement {
    */
   constructor() {
     super();
-    this.className =
+    if (this.className.indexOf(YaButton.control) < 0) {
+      this.className =
       YaButton.control + " ya-share-box ya-share-ripple " + this.className;
+    }
     const bg: HTMLSpanElement = document.createElement("span");
     bg.className = "ya-share-box-bg";
     this.oldColor = this.style.color;

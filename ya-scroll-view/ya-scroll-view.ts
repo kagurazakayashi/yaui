@@ -30,7 +30,9 @@ export default class YaScrollView extends HTMLElement {
    */
   constructor() {
     super();
-    this.className = YaScrollView.control + " " + this.className;
+    if (this.className.indexOf(YaScrollView.control) < 0) {
+      this.className = YaScrollView.control + " " + this.className;
+    }
     /*
         if (this.className.indexOf("ya-auto-hide-app-bar") >= 0) {
             const appBarEs: HTMLCollectionOf<Element> =

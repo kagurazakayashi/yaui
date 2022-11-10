@@ -47,7 +47,9 @@ export default class YaTable extends HTMLElement {
     this.curPage = currentPage;
     // headData = headData;
     // bodyData = bodyData;
-    this.className = YaTable.control;
+    if (this.className.indexOf(YaTable.control) < 0) {
+      this.className = YaTable.control + " " + this.className;
+    }
     const tableDiv = document.createElement("div");
 
     tableDiv.className = YaTable.control + "-view";

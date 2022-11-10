@@ -33,7 +33,9 @@ export default class YaFlowLayoutPanel extends HTMLElement {
    */
   constructor() {
     super();
-    this.className = YaFlowLayoutPanel.control + " " + this.className;
+    if (this.className.indexOf(YaFlowLayoutPanel.control) < 0) {
+      this.className = YaFlowLayoutPanel.control + " " + this.className;
+    }
     this.resize();
   }
 
@@ -55,7 +57,13 @@ export default class YaFlowLayoutPanel extends HTMLElement {
     const firstElement: Element | null = box.firstElementChild;
     if (firstElement != null) {
       const firstElementStyle = window.getComputedStyle(firstElement);
-      box.style.gridTemplateColumns = `repeat(auto-fill, ${firstElementStyle.width})`;
+      const width: number =
+        parseFloat(firstElementStyle.width) +
+        parseFloat(firstElementStyle.marginLeft) +
+        parseFloat(firstElementStyle.marginRight) +
+        parseFloat(firstElementStyle.paddingLeft) +
+        parseFloat(firstElementStyle.paddingRight);
+      box.style.gridTemplateColumns = `repeat(auto-fill, ${width}px)`;
     }
   }
 }

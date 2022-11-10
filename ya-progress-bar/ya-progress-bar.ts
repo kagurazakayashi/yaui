@@ -26,7 +26,9 @@ export default class YaProgressBar extends HTMLElement {
    */
   constructor() {
     super();
-    this.className = YaProgressBar.control + " " + this.className;
+    if (this.className.indexOf(YaProgressBar.control) < 0) {
+      this.className = YaProgressBar.control + " " + this.className;
+    }
     const val: string | null = this.getAttribute("values") ?? null;
     const max: number = parseInt(this.getAttribute("max") ?? "100");
     const color: string = this.getAttribute("colors") ?? "skyblue";
@@ -59,7 +61,6 @@ export default class YaProgressBar extends HTMLElement {
     maxVal = 100,
     colors = ""
   ): number[] {
-
     this.setAttribute("values", values?.toString() ?? "");
     this.setAttribute("max", maxVal.toString());
     this.setAttribute("colors", colors);

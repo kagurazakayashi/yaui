@@ -26,7 +26,9 @@ export default class YaImageCSS extends HTMLElement {
    */
   constructor() {
     super();
-    this.className = YaImageCSS.control + " " + this.className;
+    if (this.className.indexOf(YaImageCSS.control) < 0) {
+      this.className = YaImageCSS.control + " " + this.className;
+    }
     if (this.getAttribute("src") ?? "".length > 0) {
       return;
     }

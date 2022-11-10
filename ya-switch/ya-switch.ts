@@ -26,7 +26,9 @@ export default class YaSwitch extends HTMLElement {
    */
   constructor() {
     super();
-    this.className = YaSwitch.control + " " + this.className;
+    if (this.className.indexOf(YaSwitch.control) < 0) {
+      this.className = YaSwitch.control + " " + this.className;
+    }
     const label: HTMLLabelElement = document.createElement("label");
     label.className = YaSwitch.control + "-label";
     // <input type="checkbox" checked>

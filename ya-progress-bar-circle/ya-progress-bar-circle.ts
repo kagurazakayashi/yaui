@@ -1,7 +1,7 @@
 /**
  * 對話方塊（函式型）
  */
- export default class YaProgressBarCircle extends HTMLElement {
+export default class YaProgressBarCircle extends HTMLElement {
   static control = "ya-progress-bar-circle";
   private maxVal = 0;
   private colors = "";
@@ -34,6 +34,9 @@
     const colors: string | null = this.getAttribute("colors");
     const numShow: string | null = this.getAttribute("numShow");
     const text: string | null = this.getAttribute("text");
+    if (this.className.indexOf(YaProgressBarCircle.control) < 0) {
+      this.className = YaProgressBarCircle.control + " " + this.className;
+    }
     this.update(
       parseInt(value ?? "0"),
       parseInt(maxVal ?? "100"),
@@ -71,8 +74,6 @@
     if (value > maxVal) {
       maxVal = value;
     }
-    this.className = YaProgressBarCircle.control;
-
     const dleftClass = YaProgressBarCircle.control + "-left";
     const dlefts = this.getElementsByClassName(dleftClass);
     if (dlefts.length == 0) {

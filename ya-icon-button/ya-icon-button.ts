@@ -26,7 +26,9 @@ export default class YaIconButton extends HTMLElement {
    */
   constructor() {
     super();
-    this.className = YaIconButton.control + " " + this.className;
+    if (this.className.indexOf(YaIconButton.control) < 0) {
+      this.className = YaIconButton.control + " " + this.className;
+    }
     const sizePx: string = (this.getAttribute("size") ?? "50") + "px";
     const size: number = parseInt(sizePx);
     this.style.width = sizePx;

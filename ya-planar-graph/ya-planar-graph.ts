@@ -36,7 +36,9 @@ export default class PlanarGraph extends HTMLElement {
    * 顯示此對話方塊
    */
   init() {
-    this.className = PlanarGraph.control;
+    if (this.className.indexOf(PlanarGraph.control) < 0) {
+      this.className = PlanarGraph.control + " " + this.className;
+    }
     const width = this.getAttribute("width");
     if (width != null) {
       if (width.split("%").length == 1) {
@@ -67,7 +69,7 @@ export default class PlanarGraph extends HTMLElement {
       const pGVMenu = document.createElement("div");
       pGVMenu.id = "pGVMenu";
       pGVMenu.style.display = "none";
-      pGVMenu.innerHTML = "<div class=\"pGVMItem\">删除标点</div>";
+      pGVMenu.innerHTML = '<div class="pGVMItem">删除标点</div>';
       document.body.appendChild(pGVMenu);
       // const pGVMenu = document.getElementById("pGVMenu");
 
