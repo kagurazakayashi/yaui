@@ -33,6 +33,10 @@ export default class YaMenu extends HTMLElement {
    */
   constructor() {
     super();
+    this.load();
+  }
+
+  load() {
     const toSize: string | null = this.getAttribute("ya-size");
     if (toSize && toSize.length > 0) {
       return;

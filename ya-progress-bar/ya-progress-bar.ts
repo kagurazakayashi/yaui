@@ -29,10 +29,18 @@ export default class YaProgressBar extends HTMLElement {
     if (this.className.indexOf(YaProgressBar.control) < 0) {
       this.className = YaProgressBar.control + " " + this.className;
     }
-    const val: string | null = this.getAttribute("values") ?? null;
-    const max: number = parseInt(this.getAttribute("max") ?? "100");
+    const val: string | null = this.getAttribute("value") ?? null;
+    // let val2 = 0;
+    // if (!isNaN(Number(val ?? "0"))) {
+    //   val2 = Number(val ?? "0");
+    // }
+    const max = Number(this.getAttribute("max") ?? "100");
+    let max2 = 100;
+    if (!isNaN(Number(max ?? "100"))) {
+      max2 = Number(max ?? "100");
+    }
     const color: string = this.getAttribute("colors") ?? "skyblue";
-    this.update(val, max, color);
+    this.update(val, max2, color);
   }
 
   /**
@@ -61,9 +69,9 @@ export default class YaProgressBar extends HTMLElement {
     maxVal = 100,
     colors = ""
   ): number[] {
-    this.setAttribute("values", values?.toString() ?? "");
-    this.setAttribute("max", maxVal.toString());
-    this.setAttribute("colors", colors);
+    // this.setAttribute("values", values?.toString() ?? "");
+    // this.setAttribute("max", maxVal.toString());
+    // this.setAttribute("colors", colors);
     const percentages: number[] = [];
     if (values === null) {
       this.waitAni();

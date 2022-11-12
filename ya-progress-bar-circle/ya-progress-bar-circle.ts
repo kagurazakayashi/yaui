@@ -37,11 +37,15 @@ export default class YaProgressBarCircle extends HTMLElement {
     if (this.className.indexOf(YaProgressBarCircle.control) < 0) {
       this.className = YaProgressBarCircle.control + " " + this.className;
     }
+    let v2 = 0;
+    if (!isNaN(Number(value ?? "0"))) {
+      v2 = Number(value ?? "0");
+    }
     this.update(
-      parseInt(value ?? "0"),
-      parseInt(maxVal ?? "100"),
+      v2,
+      Number(maxVal ?? "100"),
       colors ?? "#skyblue",
-      parseInt(numShow ?? "1"),
+      Number(numShow ?? "1"),
       text ?? ""
     );
   }
@@ -67,10 +71,10 @@ export default class YaProgressBarCircle extends HTMLElement {
     numShow = 1,
     text = ""
   ): number {
-    this.setAttribute("value", value.toString());
-    this.setAttribute("maxVal", maxVal.toString());
-    this.setAttribute("colors", colors);
-    this.setAttribute("numShow", numShow.toString());
+    // this.setAttribute("value", value.toString());
+    // this.setAttribute("maxVal", maxVal.toString());
+    // this.setAttribute("colors", colors);
+    // this.setAttribute("numShow", numShow.toString());
     if (value > maxVal) {
       maxVal = value;
     }
