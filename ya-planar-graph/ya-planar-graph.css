@@ -14,7 +14,7 @@ body {
     background-repeat:round;
 }
 
-.position {
+.ya-planar-graph-position {
     position: absolute;
     width: 24px;
     height: 24px;
@@ -28,7 +28,7 @@ body {
     cursor: pointer;
 }
 
-#pGVMenu {
+.ya-planar-graph-pGVMenu {
     position: fixed;
     padding-top: 4px;
     padding-bottom: 4px;
@@ -36,10 +36,10 @@ body {
     background-color: white;
     border: 1px solid gainsboro;
 }
-#pGVMenu .pGVMItem {
+.ya-planar-graph-pGVMItem {
     padding: 8px;
 }
-#pGVMenu .pGVMItem:hover {
+.ya-planar-graph-pGVMItem:hover {
     cursor: pointer;
     background-color: gainsboro;
 }

@@ -1,6 +1,19 @@
 /**
  * 對話方塊（函式型）
  */
+
+interface yaPointDataOption {
+  projectID: number;
+  chartMonitorID: string | number;
+  monitorID: number;
+  width: number;
+  height: number;
+  pointX: number;
+  pointY: number;
+  pointXPercent: number;
+  pointYPercent: number;
+}
+
 export default class PlanarGraph extends HTMLElement {
   static control = "ya-planar-graph";
   pointName: (number | null)[] = [];
@@ -67,12 +80,13 @@ export default class PlanarGraph extends HTMLElement {
       )
     ) {
       const pGVMenu = document.createElement("div");
-      pGVMenu.id = "pGVMenu";
+      pGVMenu.className = PlanarGraph.control + "pGVMenu";
       pGVMenu.style.display = "none";
-      pGVMenu.innerHTML = '<div class="pGVMItem">删除标点</div>';
+      const pGVMItem = document.createElement("div");
+      pGVMItem.className = PlanarGraph.control + "pGVMItem";
+      pGVMItem.innerText = "删除标点";
+      pGVMenu.appendChild(pGVMItem);
       document.body.appendChild(pGVMenu);
-      // const pGVMenu = document.getElementById("pGVMenu");
-
       let delI = 0;
       this.onclick = (e) => {
         pGVMenu.style.display = "none";
@@ -134,25 +148,24 @@ export default class PlanarGraph extends HTMLElement {
         "pGVMItem"
       ) as HTMLCollectionOf<HTMLDivElement>;
       if (pGVMItems != null) {
-        for (let i = 0; i < pGVMItems.length; i++) {
-          const pGVMItem: HTMLDivElement = pGVMItems[i];
+        for (const element of pGVMItems) {
+          const pGVMItem: HTMLDivElement = element;
           if (pGVMItem.innerText == "删除标点") {
             pGVMItem.onclick = (e) => {
               this.pointPositionList[delI] = null;
               this.pointName[delI] = null;
               pGVMenu.style.display = "none";
               const positions = this.getElementsByClassName(
-                "position"
+                PlanarGraph.control + "-position"
               ) as HTMLCollectionOf<HTMLDivElement>;
-              for (let pi = 0; pi < positions.length; pi++) {
-                const position: HTMLDivElement = positions[pi];
+              for (const element2 of positions) {
+                const position: HTMLDivElement = element2;
                 //console.log("##", position.innerText, (delI + 1).toString(), position.innerText == (delI + 1).toString())
                 if (position.innerText == (delI + 1).toString()) {
                   position.remove();
                   break;
                 }
               }
-
               e.stopPropagation();
             };
             break;
@@ -163,7 +176,7 @@ export default class PlanarGraph extends HTMLElement {
   }
 
   /**
-   * 顯示此對話方塊https://www.mytongdy.com/observer/client/#/project/231/private
+   * 顯示此對話方塊
    */
   show(option: yaPointDataOption[]) {
     const isShowMode = this.getAttribute("show");
@@ -209,15 +222,4 @@ export default class PlanarGraph extends HTMLElement {
     this.pointPositionList = [];
     this.remove();
   }
-}
-interface yaPointDataOption {
-  projectID: number;
-  chartMonitorID: string | number;
-  monitorID: number;
-  width: number;
-  height: number;
-  pointX: number;
-  pointY: number;
-  pointXPercent: number;
-  pointYPercent: number;
 }
