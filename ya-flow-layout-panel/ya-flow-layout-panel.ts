@@ -4,12 +4,12 @@
 
 // 內容框架
 export class YaFlowLayoutPanelContent extends HTMLElement {
-  static control = "ya-flow-layout-panel-content";
+  static readonly control = "ya-flow-layout-panel-content";
 }
 
 // 卡片列表佈局面板
 export default class YaFlowLayoutPanel extends HTMLElement {
-  static control = "ya-flow-layout-panel";
+  static readonly control = "ya-flow-layout-panel";
 
   /**
    * 加载所需的样式等其他文件

@@ -2,7 +2,7 @@
  * 滑塊開關
  */
 export default class YaSwitch extends HTMLElement {
-  static control = "ya-switch";
+  static readonly control = "ya-switch";
 
   /**
    * 加载所需的样式等其他文件
@@ -36,9 +36,7 @@ export default class YaSwitch extends HTMLElement {
     input.className = YaSwitch.control + "-input";
     input.type = "checkbox";
     input.checked = this.hasAttribute("value")
-      ? this.getAttribute("value") == "0"
-        ? false
-        : true
+      ? this.getAttribute("value") != "0"
       : false;
     this.setAttribute("value", input.checked ? "1" : "0");
     input.readOnly = true;

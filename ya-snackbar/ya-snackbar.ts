@@ -2,7 +2,7 @@
  * 臨時彈出資訊框（函式型）
  */
 export default class YaSnackbar {
-  static control = "ya-snackbar";
+  static readonly control = "ya-snackbar";
 
   /**
    * 加载所需的样式等其他文件

@@ -3,7 +3,7 @@
  */
 import YaLoadingSpinner from "../ya-loading-spinner/ya-loading-spinner";
 export default class YaButton extends HTMLElement {
-  static control = "ya-button";
+  static readonly control = "ya-button";
   oldColor: string;
 
   /**

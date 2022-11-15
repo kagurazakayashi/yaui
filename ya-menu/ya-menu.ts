@@ -6,7 +6,7 @@ export interface YaMenuDelegate {
 }
 
 export default class YaMenu extends HTMLElement {
-  static control = "ya-menu";
+  static readonly control = "ya-menu";
   bg: HTMLSpanElement = document.createElement("span");
   delegate: YaMenuDelegate | null = null;
   compensate: number[] = [0, 0, 0, 0]; //XYWH

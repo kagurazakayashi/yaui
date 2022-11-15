@@ -2,7 +2,7 @@
  * 將 CSS 轉換為 Image
  */
 export default class YaImageCSS extends HTMLElement {
-  static control = "ya-image-css";
+  static readonly control = "ya-image-css";
 
   /**
    * 加载所需的样式等其他文件

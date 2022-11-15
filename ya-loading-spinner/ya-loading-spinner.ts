@@ -2,7 +2,7 @@
  * 載入圓圈
  */
 export default class YaLoadingSpinner {
-  static control = "ya-loading-spinner";
+  static readonly control = "ya-loading-spinner";
 
   /**
    * 加载所需的样式等其他文件

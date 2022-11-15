@@ -2,7 +2,7 @@
  * 對話方塊（函式型）
  */
 export default class YaTable extends HTMLElement {
-  static control = "ya-table";
+  static readonly control = "ya-table";
   curPage = "1";
 
   /**

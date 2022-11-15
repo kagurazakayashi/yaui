@@ -2,7 +2,7 @@
  * 對話方塊（函式型）
  */
 export default class YaDialog {
-  static control = "ya-dialog";
+  static readonly control = "ya-dialog";
   // dialog: HTMLDivElement;
   // bodyOverFlow: string = "auto";
 

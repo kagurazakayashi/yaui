@@ -15,7 +15,7 @@ interface yaPointDataOption {
 }
 
 export default class PlanarGraph extends HTMLElement {
-  static control = "ya-planar-graph";
+  static readonly control = "ya-planar-graph";
   pointName: (number | null)[] = [];
   pointPositionList: (number[][] | null)[] = [];
   index = 1;

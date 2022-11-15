@@ -2,7 +2,7 @@
  * 頂部標題欄
  */
 export default class YaTopAppBar extends HTMLElement {
-  static control = "ya-top-app-bar";
+  static readonly control = "ya-top-app-bar";
   // scrollOldTop: number = 0;
   // scrollOldMode: boolean = false; // F↑ T↓
   // scrollModeI: number = 0;

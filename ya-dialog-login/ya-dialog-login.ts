@@ -2,7 +2,7 @@
  * 自定義對話方塊
  */
 export default class YaDialogLogin extends HTMLElement {
-  static control = "ya-dialog-login";
+  static readonly control = "ya-dialog-login";
 
   /**
    * 加载所需的样式等其他文件

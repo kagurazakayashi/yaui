@@ -2,7 +2,7 @@
  * 滾動區域，配合 ya-view 使用
  */
 export default class YaScrollView extends HTMLElement {
-  static control = "ya-scroll-view";
+  static readonly control = "ya-scroll-view";
   scrollOldTop = 0;
   scrollOldMode = false; // F↑ T↓
   scrollModeI = 0;

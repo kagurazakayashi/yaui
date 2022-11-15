@@ -2,7 +2,7 @@
  * 進度條和條形結構圖顯示控制元件
  */
 export default class YaProgressBar extends HTMLElement {
-  static control = "ya-progress-bar";
+  static readonly control = "ya-progress-bar";
 
   /**
    * 加载所需的样式等其他文件

@@ -2,7 +2,7 @@
  * 對話方塊（函式型）
  */
 export default class YaProgressBarCircle extends HTMLElement {
-  static control = "ya-progress-bar-circle";
+  static readonly control = "ya-progress-bar-circle";
   private maxVal = 0;
   private colors = "";
   private numShow = -1;

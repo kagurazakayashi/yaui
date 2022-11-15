@@ -2,7 +2,7 @@
  * 空白块状面板
  */
 export default class YaView extends HTMLElement {
-  static control = "ya-view";
+  static readonly control = "ya-view";
 
   /**
    * 加载所需的样式等其他文件

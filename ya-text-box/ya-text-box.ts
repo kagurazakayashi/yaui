@@ -3,7 +3,7 @@
  */
 import YaMenu, { YaMenuDelegate } from "../ya-menu/ya-menu";
 export default class YaTextBox extends HTMLElement implements YaMenuDelegate {
-  static control = "ya-text-box";
+  static readonly control = "ya-text-box";
   modes: string[] = [];
   errBoxs: HTMLDivElement[] = [];
   input: HTMLInputElement;

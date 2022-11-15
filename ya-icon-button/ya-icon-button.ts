@@ -2,7 +2,7 @@
  * 圖示按鈕
  */
 export default class YaIconButton extends HTMLElement {
-  static control = "ya-icon-button";
+  static readonly control = "ya-icon-button";
 
   /**
    * 加载所需的样式等其他文件
